@@ -291,4 +291,42 @@
     .video-container h5 { /* From index.html */
         color: var(--accent-color-dark) !important;
     }
+
+    /* Carousel Dark Mode Styles */
+    .app-mockups-carousel-section {
+        background-color: var(--background-color-dark); /* Match page background */
+    }
+    .carousel-block {
+        background-color: var(--card-background-dark); /* Dark card background */
+        box-shadow: 0 6px 20px rgba(255,255,255,0.05); /* Lighter shadow for dark mode */
+    }
+    .carousel-title {
+        color: var(--accent-color-dark); /* Accent color for titles */
+    }
+    .carousel-description {
+        color: var(--text-color-dark); /* Standard dark mode text color */
+    }
+    .carousel-container {
+        background-color: var(--background-color-dark); /* Match section background */
+    }
+    .carousel-slide img {
+        box-shadow: 0 4px 12px rgba(255,255,255,0.08); /* Lighter shadow for images on dark bg */
+    }
+    .carousel-button {
+        background-color: var(--secondary-color-dark); /* Darker buttons */
+        color: var(--text-color-dark);
+    }
+    .carousel-button:hover {
+        background-color: var(--accent-color-dark);
+        color: var(--button-text-color-dark); /* Dark text on light accent */
+    }
+    .carousel-button:focus {
+        outline: 2px solid var(--accent-color-dark);
+    }
+    .app-availability-info {
+        background-color: var(--primary-color-dark); /* Slightly different dark shade for this info box */
+    }
+    .app-availability-info p {
+        color: var(--text-color-dark);
+    }
 }
