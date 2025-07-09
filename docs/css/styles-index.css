@@ -1,6 +1,44 @@
 .nav-wrapper {
     /* No overrides here, just a placeholder for specificity if needed */
 }
+
+/* General Page Section Styling */
+.section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px; /* Increased max-width for better desktop view */
+    margin: 0 auto;
+}
+
+h1.header { /* Hero section title */
+    font-size: 3.2rem; /* Slightly adjusted for balance */
+    font-weight: 700; /* Bolder for impact */
+    line-height: 1.2;
+}
+
+h2.center-align, .carousel-title { /* General section titles */
+    font-size: 2.5rem; /* Increased size */
+    font-weight: 600; /* Medium-bold */
+    margin-bottom: 1.5rem; /* More space below title */
+    font-family: 'Kalam', cursive; /* Consistent stylized font for titles */
+    color: var(--text-color);
+}
+
+p.light, p.sub-text, .carousel-description, .app-availability-info p { /* Paragraph text */
+    font-size: 1.15rem; /* Slightly larger for readability */
+    line-height: 1.7;
+    color: var(--text-color);
+}
+.sub-text {
+    margin-top: 1rem;
+    font-size: 1rem; /* Smaller for sub-text */
+}
+
+
 .sidenav-trigger {
     display: none;
 }
@@ -21,38 +59,51 @@
     --button-background-color: #ffeb3b; /* Yellow button */
     --button-text-color: #2a2a2a; /* Dark text on yellow button */
     --link-color: #039be5; /* Default Materialize link color */
+    --font-body: 'Tinos', serif;
+    --font-titles: 'Kalam', cursive;
+    --font-ui: 'Roboto', sans-serif;
 }
 
 body {
     background-color: var(--background-color);
     color: var(--text-color);
-    font-family: "Tinos", serif;
+    font-family: var(--font-body); /* Updated */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    line-height: 1.65; /* Improved line height for body text */
 }
 
-nav.nav-wrapper { /* More specific selector for nav */
-    background-color: var(--nav-background-color) !important; /* Important to override Materialize */
+nav.nav-wrapper {
+    background-color: var(--nav-background-color) !important;
     color: var(--nav-text-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 0;
+    padding: 10px 0; /* Increased padding */
 }
-nav.nav-wrapper .brand-logo, nav.nav-wrapper ul a {
+nav.nav-wrapper .brand-logo {
     color: var(--nav-text-color) !important;
+    font-family: var(--font-titles); /* Kalam for logo */
+    font-size: 2rem; /* Slightly larger logo text */
+}
+nav.nav-wrapper ul a {
+    color: var(--nav-text-color) !important;
+    font-family: var(--font-ui); /* Roboto for nav links */
+    font-size: 1rem; /* Standard nav link size */
+    padding: 0 18px; /* More padding for nav links */
 }
 .sidenav {
-    background-color: var(--nav-background-color); /* Or a slightly different dark shade */
+    background-color: var(--nav-background-color);
 }
 .sidenav li > a {
     color: var(--nav-text-color) !important;
+    font-family: var(--font-ui); /* Roboto for sidenav links */
 }
 
 
-.NT {
-    font-family: Kalam, serif;
+.NT { /* This class seems to be for nav items, ensure it uses UI font */
+    font-family: var(--font-ui);
 }
 
 /* Hero Section */

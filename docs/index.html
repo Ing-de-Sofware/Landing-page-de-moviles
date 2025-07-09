@@ -12,8 +12,9 @@
     <!-- Materialize CSS (Material Design) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tinos:wght@400;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Kalam for titles, Tinos for body text, and Roboto for UI elements -->
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Tinos:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- For Material Icons -->
 
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="css/styles-index.css">
@@ -197,6 +198,58 @@
     </div>
 </section>
 
+<!-- App Mockups Carousel Section -->
+<section class="section app-mockups-carousel-section">
+    <div class="container">
+        <!-- Section 1: For Drivers -->
+        <div class="carousel-block" id="drivers-carousel-block" role="region" aria-labelledby="drivers-carousel-title">
+            <h2 class="carousel-title center-align" id="drivers-carousel-title" data-i18n="carouselDriversTitle">Para conductores</h2>
+            <p class="carousel-description center-align" data-i18n="carouselDriversDesc">Encuentra y reserva espacios de estacionamiento en segundos. Olvídate de dar vueltas: ubica el lugar más cercano desde tu celular, en tiempo real y sin complicaciones.</p>
+            <div class="carousel-container" id="drivers-carousel">
+                <div class="carousel-wrapper">
+                    <div class="carousel-slide">
+                        <img src="images/imagen1png.png" alt="App interface showing map view for parking spots." class="responsive-img">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/imagen2.png" alt="App interface detailing a selected parking spot with booking options." class="responsive-img">
+                    </div>
+                </div>
+                <button class="carousel-button prev" aria-label="Previous slide for drivers section"><i class="material-icons">chevron_left</i></button>
+                <button class="carousel-button next" aria-label="Next slide for drivers section"><i class="material-icons">chevron_right</i></button>
+            </div>
+        </div>
+
+        <!-- Section 2: For Parking Owners -->
+        <div class="carousel-block" id="owners-carousel-block" role="region" aria-labelledby="owners-carousel-title">
+            <h2 class="carousel-title center-align" id="owners-carousel-title" data-i18n="carouselOwnersTitle">Para dueños de estacionamiento</h2>
+            <p class="carousel-description center-align" data-i18n="carouselOwnersDesc">Administra tus espacios, controla tus ingresos y recibe reservas automáticas desde tu app. Lleva tu estacionamiento al siguiente nivel, de forma fácil y segura.</p>
+            <div class="carousel-container" id="owners-carousel">
+                <div class="carousel-wrapper">
+                    <div class="carousel-slide">
+                        <img src="images/imagen3.png" alt="App dashboard for parking owners showing earnings and occupancy." class="responsive-img">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/imagen4.png" alt="App interface for managing parking space details and availability." class="responsive-img">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/imagen5.png" alt="App view of incoming booking requests for parking owners." class="responsive-img">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/imagen6.png" alt="App settings or profile page for parking owners." class="responsive-img">
+                    </div>
+                </div>
+                <button class="carousel-button prev" aria-label="Previous slide for parking owners section"><i class="material-icons">chevron_left</i></button>
+                <button class="carousel-button next" aria-label="Next slide for parking owners section"><i class="material-icons">chevron_right</i></button>
+            </div>
+        </div>
+
+        <div class="app-availability-info center-align">
+            <p data-i18n="appStoreInfo">Disponible muy pronto en Play Store y App Store.<br>Sigue nuestro sitio para recibir novedades y ser el primero en probar la app.</p>
+        </div>
+    </div>
+</section>
+
+
 <!-- CTA Section -->
 <section class="cta-section">
     <div class="cta-content">
@@ -327,32 +380,100 @@
 
 <!-- Custom JS for page specific functionalities -->
 <script>
-    // Initialize Materialize Sidenav
     document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.sidenav');
-        M.Sidenav.init(elems);
+        // Initialize Materialize Sidenav
+        var sidenavElems = document.querySelectorAll('.sidenav');
+        M.Sidenav.init(sidenavElems);
+
+        // Toggle chatbox visibility
+        const chatButton = document.getElementById('chatButton');
+        const chatBox = document.getElementById('chatBox');
+        const closeChat = document.getElementById('closeChat');
+
+        if (chatButton && chatBox && closeChat) {
+            chatButton.addEventListener('click', () => {
+                chatBox.classList.toggle('show');
+            });
+
+            closeChat.addEventListener('click', () => {
+                chatBox.classList.remove('show');
+            });
+        }
+
+        // Initialize Carousels
+        function initializeCarousel(carouselId, numDriverSlides, numOwnerSlides) {
+            const carousel = document.getElementById(carouselId);
+            if (!carousel) return;
+
+            const wrapper = carousel.querySelector('.carousel-wrapper');
+            const slides = Array.from(wrapper.children);
+            const prevButton = carousel.querySelector('.carousel-button.prev');
+            const nextButton = carousel.querySelector('.carousel-button.next');
+
+            let currentIndex = 0;
+            let totalSlides = slides.length;
+            let touchstartX = 0;
+            let touchendX = 0;
+
+            function updateCarousel() {
+                wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            function showNext() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateCarousel();
+            }
+
+            function showPrev() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+
+            if (nextButton) nextButton.addEventListener('click', showNext);
+            if (prevButton) prevButton.addEventListener('click', showPrev);
+
+            // Keyboard navigation
+            carousel.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    showNext();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrev();
+                }
+            });
+
+            // Touch swipe navigation
+            wrapper.addEventListener('touchstart', e => {
+                touchstartX = e.changedTouches[0].screenX;
+            });
+
+            wrapper.addEventListener('touchend', e => {
+                touchendX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                if (touchendX < touchstartX) { // Swiped left
+                    showNext();
+                }
+                if (touchendX > touchstartX) { // Swiped right
+                    showPrev();
+                }
+            }
+
+            // Set tabindex for focus
+            slides.forEach(slide => slide.setAttribute('tabindex', '-1')); // Make slides not focusable by default
+            carousel.setAttribute('tabindex', '0'); // Make carousel container focusable
+        }
+
+        initializeCarousel('drivers-carousel');
+        initializeCarousel('owners-carousel');
     });
 
-    // Toggle chatbox visibility
-    const chatButton = document.getElementById('chatButton');
-    const chatBox = document.getElementById('chatBox');
-    const closeChat = document.getElementById('closeChat');
-
-    if (chatButton && chatBox && closeChat) {
-        chatButton.addEventListener('click', () => {
-            chatBox.classList.toggle('show');
-        });
-
-        closeChat.addEventListener('click', () => {
-            chatBox.classList.remove('show');
-        });
-    }
 
     // Chatbot interaction (basic example)
     function userChoice(option) {
         const messagesDiv = document.getElementById('messages');
         let response = "";
-        // Translations for chat responses (can be moved to JSON if more complex)
         const chatResponses = {
             en: {
                 parkingAvailability: "Checking parking availability... Please wait.",
@@ -365,23 +486,14 @@
                 optimalRoutes: "Las rutas óptimas se calculan según tu ubicación actual y destino una vez que seleccionas un lugar de estacionamiento."
             }
         };
-
-        const currentLang = document.documentElement.lang.startsWith('es') ? 'es' : 'en'; // Determine current language
-
+        const currentLang = document.documentElement.lang.startsWith('es') ? 'es' : 'en';
         switch (option) {
-            case 'parkingAvailability':
-                response = chatResponses[currentLang].parkingAvailability;
-                break;
-            case 'howToBook':
-                response = chatResponses[currentLang].howToBook;
-                break;
-            case 'optimalRoutes':
-                response = chatResponses[currentLang].optimalRoutes;
-                break;
-            default:
-                response = "I'm sorry, I didn't understand that option.";
+            case 'parkingAvailability': response = chatResponses[currentLang].parkingAvailability; break;
+            case 'howToBook': response = chatResponses[currentLang].howToBook; break;
+            case 'optimalRoutes': response = chatResponses[currentLang].optimalRoutes; break;
+            default: response = "I'm sorry, I didn't understand that option.";
         }
-        messagesDiv.textContent = response; // Update chat message
+        messagesDiv.textContent = response;
     }
 </script>
 
