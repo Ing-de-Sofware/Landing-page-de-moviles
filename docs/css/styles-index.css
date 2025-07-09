@@ -4,20 +4,52 @@
 .sidenav-trigger {
     display: none;
 }
+
+:root {
+    --background-color: #ffffff;
+    --text-color: #2a2a2a;
+    --primary-color: #2D333F; /* Hero section bg */
+    --primary-text-color: #ffffff; /* Hero section text */
+    --accent-color: #ffeb3b; /* Yellow accent */
+    --secondary-color: #e8db6c; /* Benefits section bg */
+    --card-background-color: #ffffff; /* Card bg */
+    --card-text-color: #2a2a2a; /* Card text */
+    --nav-background-color: #263238; /* blue-grey darken-3 */
+    --nav-text-color: #ffffff;
+    --footer-background-color: #263238; /* blue-grey darken-3 */
+    --footer-text-color: #ffffff;
+    --button-background-color: #ffeb3b; /* Yellow button */
+    --button-text-color: #2a2a2a; /* Dark text on yellow button */
+    --link-color: #039be5; /* Default Materialize link color */
+}
+
 body {
-    background-color: #ffffff;
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-family: "Tinos", serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-nav {
+nav.nav-wrapper { /* More specific selector for nav */
+    background-color: var(--nav-background-color) !important; /* Important to override Materialize */
+    color: var(--nav-text-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px 0;
 }
+nav.nav-wrapper .brand-logo, nav.nav-wrapper ul a {
+    color: var(--nav-text-color) !important;
+}
+.sidenav {
+    background-color: var(--nav-background-color); /* Or a slightly different dark shade */
+}
+.sidenav li > a {
+    color: var(--nav-text-color) !important;
+}
+
 
 .NT {
     font-family: Kalam, serif;
@@ -25,9 +57,9 @@ nav {
 
 /* Hero Section */
 #index-banner {
-    background-color: #2D333F;
+    background-color: var(--primary-color);
     padding: 100px 0;
-    color: white;
+    color: var(--primary-text-color);
 }
 
 .ParkingNow_Logo {
@@ -40,16 +72,17 @@ nav {
     font-family: 'Kalam', cursive;
     font-size: 3.5rem;
     line-height: 4rem;
-    color: #ffeb3b;
+    color: var(--accent-color);
 }
 
 #index-banner p {
     font-size: 1.2rem;
+    color: var(--primary-text-color); /* Ensure paragraph text is also correct color */
 }
 
 #index-banner .btn-large {
-    background-color: #ffeb3b;
-    color: #2a2a2a;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
     margin-top: 20px;
 }
 
@@ -60,7 +93,17 @@ nav {
 
 /* Cities Section */
 .section h2 {
-    color: #2a2a2a;
+    color: var(--text-color); /* Updated */
+}
+.card {
+    background-color: var(--card-background-color); /* Updated */
+    color: var(--card-text-color); /* Updated */
+}
+.card .card-title {
+    color: var(--card-text-color); /* Updated */
+}
+.card p {
+    color: var(--card-text-color); /* Updated */
 }
 
 .card-image img {
@@ -70,13 +113,13 @@ nav {
 
 /* Service Benefits Section */
 .benefits-section {
-    background-color: #e8db6c;
+    background-color: var(--secondary-color); /* Updated */
     padding: 50px 0;
 }
 
 .benefits-section h2 {
     text-align: center;
-    color: #fff;
+    color: var(--text-color); /* Text color on secondary background */
     font-family: 'Kalam', cursive;
     font-size: 4.5rem;
 }
@@ -92,8 +135,8 @@ nav {
 }
 
 .benefit {
-    background-color: #2a2a2a;
-    color: #fff;
+    background-color: var(--primary-color); /* Darker background for benefit cards */
+    color: var(--primary-text-color); /* Text color for benefit cards */
     padding: 20px;
     border-radius: 10px;
     margin: 20px;
@@ -107,6 +150,9 @@ nav {
 }
 
 /* Promotions Section */
+.promotions-section h2 { /* Ensure this is targeted if it's different from general .section h2 */
+    color: var(--text-color);
+}
 .promotion-grid {
     display: flex;
     justify-content: space-between;
@@ -114,33 +160,40 @@ nav {
 }
 
 .promotion {
-    background-color: rgba(232, 252, 114, 0.56);
+    background-color: var(--card-background-color); /* Light background for promotions */
     border-radius: 10px;
     padding: 20px;
     text-align: center;
     width: 30%;
     margin-bottom: 20px;
     transition: transform 0.3s;
+    color: var(--card-text-color);
+}
+.promotion h3 {
+    color: var(--accent-color); /* Accent for titles */
 }
 
 .promotion2 {
     font-family: Kalam, serif;
-    background-color: rgba(255, 198, 45, 0.8);
+    background-color: var(--secondary-color); /* Different background for promotion2 */
     border-radius: 10px;
     padding: 20px;
     text-align: start;
     width: 30%;
     margin-bottom: 20px;
     transition: transform 0.3s;
-    color: white;
+    color: var(--text-color); /* Text color on secondary */
+}
+.promotion2 h3 {
+    color: var(--primary-color); /* Darker title on lighter secondary */
 }
 
 .promotion2 p {
     font-family: Tinos, serif;
-    color: white;
+    color: var(--text-color);
 }
 
-.promotion:hover {
+.promotion:hover, .promotion2:hover { /* Added hover for promotion2 */
     transform: scale(1.05);
 }
 
@@ -154,16 +207,16 @@ nav {
 /* CTA Section */
 .cta-section {
     position: relative;
-    background-color: #000000;
+    background-color: #000000; /* Kept black as per original, or use var(--primary-color) if it fits */
     padding: 60px 0;
-    color: white;
+    color: var(--primary-text-color); /* Text on dark bg */
     text-align: center;
     font-family: Kalam, serif;
 }
 
 .cta-title {
     font-family: Kalam, serif;
-    color: white;
+    color: var(--primary-text-color);
     font-size: 3rem;
     margin-bottom: 20px;
 }
@@ -171,15 +224,12 @@ nav {
 .cta-subtitle {
     font-size: 1.5rem;
     margin-bottom: 40px;
-}
-
-.promotion h3 {
-    font-family: Kalam, serif;
+    color: var(--primary-text-color);
 }
 
 .cta-button {
-    background-color: #ffeb3b;
-    color: #2a2a2a;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
     padding: 15px 30px;
     border-radius: 10px;
     font-size: 1.2rem;
@@ -188,11 +238,11 @@ nav {
 }
 
 .cta-button:hover {
-    background-color: #d5b527;
+    background-color: #d5b527; /* Darken of accent */
 }
 
 .cta-button a {
-    color: #2a2a2a;
+    color: var(--button-text-color);
     text-decoration: none;
     font-family: Kalam, serif;
 }
@@ -228,44 +278,45 @@ nav {
     min-height: 70vh;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #363c48, #5f687c);
+    background: linear-gradient(to right, var(--primary-color), #5f687c); /* Use var or keep gradient */
 }
 
 .container_r {
-    background-color: #000000;
+    background-color: #000000; /* Or var(--primary-color) */
     padding: 35px;
     border-radius: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2); /* Adjust shadow for dark mode if needed */
     max-width: 1600px;
     height: auto;
 }
+.container_r .cta-title { /* Title inside register section */
+    color: var(--primary-text-color);
+}
 
-.center-align {
+.center-align { /* General center align, used for titles */
     font-family: Kalam, serif;
-    text-shadow: #333333 6px 6px 20px;
+    text-shadow: #000000 3px 3px 10px; /* Darker shadow for light text if on light bg, or lighter for dark */
+    color: var(--text-color);
 }
 
-.btn-large waves-effect waves-light {
+
+.btn-large.waves-effect.waves-light { /* Specific button styling */
     border-radius: 6px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
 }
 
-.card {
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    transition: 0.3s;
-}
 
-.card-title {
+.card-title { /* Already handled by .card .card-title */
     font-family: Kalam, sans-serif;
     font-weight: bolder;
     font-size: 1.3rem;
 }
 
-.card-title p {
+.card-title p { /* Already handled by .card p */
     font-family: Tinos, serif;
 }
 
@@ -283,20 +334,20 @@ nav {
 }
 
 .Choose1 {
-    background-color: #cff1ff;
+    background-color: #cff1ff; /* Consider var for this */
     border-radius: 30px;
     transition: 0.5s;
     margin: 20px;
 }
 
 .Choose1:hover {
-    background-color: #9fd7ff;
+    background-color: #9fd7ff; /* Consider var for this */
     color: white;
     border-radius: 30px;
 }
 
 .Choose2 {
-    background-color: #fffbcf;
+    background-color: #fffbcf; /* Consider var for this */
     border-radius: 30px;
     transition: 0.5s;
     margin: 20px;
@@ -304,7 +355,7 @@ nav {
 }
 
 .Choose2:hover {
-    background-color: #ffef9f;
+    background-color: #ffef9f; /* Consider var for this */
     color: white;
     border-radius: 30px;
 }
@@ -314,20 +365,21 @@ nav {
     left: 4%;
     position: absolute;
     width: 8%;
-    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2); /* Adjust shadow */
 }
 
 .option h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--accent-color); /* Title in option */
 }
 
-.option p {
+.option p.ptex { /* More specific for text in .option */
     font-size: 0.9em;
-    color: #fff;
+    color: var(--primary-text-color); /* Text in option on dark bg */
     line-height: 1.5em;
 }
+
 
 .Register {
     font-family: "Kalam", cursive;
@@ -339,35 +391,25 @@ nav {
 }
 
 .register-form {
-    background-color: white;
+    background-color: var(--card-background-color); /* Form background */
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.9);
+    box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.9); /* Adjust shadow */
     display: flex;
     justify-content: space-between;
     width: 100%;
     max-width: 100%;
 }
-
-.register-form h1 {
-    font-size: 3.5em;
-    margin: 0;
+.register-form h1, .register-form h2 {
+    color: var(--card-text-color);
 }
-
-.register-form h2 {
-    margin: 0;
-    font-size: 1.5em;
-}
-
 .register-form p {
-    font-size: 0.9em;
-    color: #555;
+    color: var(--card-text-color); /* Lighter text for readability */
+}
+.register-form a {
+    color: var(--link-color); /* Link color */
 }
 
-.register-form a {
-    color: #5e3fd6;
-    text-decoration: none;
-}
 
 .input-group {
     margin-bottom: 20px;
@@ -376,14 +418,14 @@ nav {
 .circle {
     width: 150px;
     height: 150px;
-    background-color: #d3d3d3;
+    background-color: #d3d3d3; /* Or a var */
     border-radius: 50%;
     margin: 0 auto 20px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Adjust shadow */
 }
 
 .CircleImg {
@@ -392,45 +434,30 @@ nav {
     object-fit: cover;
 }
 
-.option p {
-    font-size: 0.9em;
-    color: #8f8f8f;
-    line-height: 1.5em;
-    transition: 0.3s;
-}
 
-.circle {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: #f5f5f5;
-}
-
-.CircleImg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.ptex {
+.ptex { /* General ptex, if not inside .option */
     font-size: 1.1rem;
-    color: #666;
+    color: var(--text-color);
 }
 
 /* Footer */
-footer {
+footer.page-footer { /* Specific for Materialize footer */
+    background-color: var(--footer-background-color) !important; /* Override Materialize */
+    color: var(--footer-text-color);
     padding-top: 30px;
 }
 
-footer h5,
-footer a {
-    color: white;
+footer.page-footer h5,
+footer.page-footer a {
+    color: var(--footer-text-color) !important;
 }
 
-footer a:hover {
+footer.page-footer a:hover {
     text-decoration: underline;
+    color: var(--accent-color) !important; /* Hover color for links */
+}
+.footer-copyright p {
+    color: var(--footer-text-color);
 }
 
 /* GitHub Icon */
@@ -467,7 +494,10 @@ footer a:hover {
     letter-spacing: 0.8px;
     border-radius: 10px;
     transition: all 0.3s;
-    border: 1px solid rgba(156, 156, 156, 0.466);
+    border: 1px solid var(--secondary-color); /* Use a variable for border */
+}
+.svgContainer svg path {
+    fill: var(--footer-text-color); /* Ensure icon fill is correct */
 }
 
 .BG {
@@ -475,7 +505,7 @@ footer a:hover {
     content: "";
     width: 100%;
     height: 100%;
-    background: #181818;
+    background: var(--primary-color); /* Darker background for the BG effect */
     z-index: -1;
     border-radius: 10px;
     pointer-events: none;
@@ -485,30 +515,49 @@ footer a:hover {
 .Btn:hover .BG {
     transform: rotate(35deg);
     transform-origin: bottom;
+    background: var(--accent-color); /* Accent on hover */
 }
 
 .Btn:hover .svgContainer {
-    background-color: rgba(156, 156, 156, 0.466);
+    background-color: rgba(156, 156, 156, 0.1); /* Lighter/transparent effect */
     backdrop-filter: blur(4px);
 }
 
 
 /* Chat Button */
-#chatButton {
+#chatButton { /* Floating action button */
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
+    background-color: var(--button-background-color) !important;
+    color: var(--button-text-color) !important;
+}
+#chatButton i {
+    color: var(--button-text-color) !important;
 }
 
-.chat-box {
+.chat-box.card-panel { /* Chat box specific */
     position: fixed;
     bottom: 80px;
     right: 20px;
     z-index: 1000;
     max-width: 300px;
     display: none;
+    background-color: var(--card-background-color);
+    color: var(--card-text-color);
+    border: 1px solid var(--secondary-color);
 }
+.chat-box .chat-header span {
+    color: var(--accent-color);
+}
+.chat-box .close-button {
+    color: var(--card-text-color);
+}
+.chat-box #messages {
+    color: var(--card-text-color);
+}
+
 
 .show {
     display: block;

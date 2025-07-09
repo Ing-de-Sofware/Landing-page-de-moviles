@@ -1,0 +1,294 @@
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* General dark theme colors */
+        --background-color-dark: #121212;
+        --text-color-dark: #e0e0e0;
+        --primary-color-dark: #1e1e1e; /* Slightly lighter than background for cards/sections */
+        --secondary-color-dark: #333333; /* For borders, accents */
+        --accent-color-dark: #ffeb3b; /* Yellow accent, ensure it has good contrast */
+        --link-color-dark: #bb86fc; /* A common link color in dark themes */
+        --nav-background-dark: #1f2937; /* Darker shade for nav */
+        --footer-background-dark: #1f2937;
+        --card-background-dark: #1e1e1e;
+        --button-background-dark: var(--accent-color-dark);
+        --button-text-color-dark: #121212; /* Dark text on light accent button */
+        --input-background-dark: #2c2c2c;
+        --input-text-color-dark: #e0e0e0;
+        --placeholder-color-dark: #757575;
+    }
+
+    body {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
+    }
+
+    nav.nav-wrapper, .blue-grey.darken-3 {
+        background-color: var(--nav-background-dark) !important;
+    }
+
+    .nav-wrapper .brand-logo, .nav-wrapper ul a, .sidenav li a, .material-icons {
+        color: var(--text-color-dark) !important;
+    }
+    .sidenav {
+        background-color: var(--primary-color-dark);
+    }
+
+    .btn, .btn-large, .btn-floating {
+        background-color: var(--button-background-dark) !important;
+        color: var(--button-text-color-dark) !important;
+    }
+     .btn.grey.darken-3 { /* Language switcher */
+        background-color: var(--secondary-color-dark) !important;
+        color: var(--text-color-dark) !important;
+    }
+
+
+    #index-banner {
+        background-color: var(--primary-color-dark);
+        color: var(--text-color-dark);
+    }
+    #index-banner h1 {
+        color: var(--accent-color-dark);
+    }
+
+    .card {
+        background-color: var(--card-background-dark);
+        color: var(--text-color-dark);
+    }
+    .card .card-title, .card p {
+        color: var(--text-color-dark);
+    }
+    .card .card-action a {
+        color: var(--accent-color-dark);
+    }
+
+
+    .benefits-section {
+        background-color: var(--secondary-color-dark); /* Darker shade for this section */
+    }
+    .benefits-section h2 {
+        color: var(--accent-color-dark);
+    }
+    .benefit {
+        background-color: var(--primary-color-dark); /* Card-like elements */
+        color: var(--text-color-dark);
+    }
+
+    .promotions-section h2, .videos-section h2 {
+        color: var(--accent-color-dark);
+    }
+     .promotions-section .promotion, .promotions-section .promotion2 {
+        background-color: var(--primary-color-dark);
+        color: var(--text-color-dark);
+    }
+    .promotions-section .promotion h3, .promotions-section .promotion2 h3 {
+        color: var(--accent-color-dark);
+    }
+    .promotions-section .promotion p, .promotions-section .promotion2 p {
+        color: var(--text-color-dark);
+    }
+
+
+    .cta-section {
+        background-color: #000000; /* Keep it black or very dark */
+        color: var(--text-color-dark);
+    }
+    .cta-title, .cta-subtitle {
+        color: var(--text-color-dark);
+    }
+     .cta-button a {
+        color: var(--button-text-color-dark);
+    }
+
+
+    .register_p {
+        background: linear-gradient(to right, #2c3e50, #1a252f); /* Darker gradient */
+    }
+    .register_p .container_r {
+        background-color: var(--primary-color-dark);
+        box-shadow: 12px 12px 2px 1px rgba(255, 255, 255, 0.05); /* Lighter shadow for dark bg */
+    }
+    .register_p .cta-title {
+        color: var(--text-color-dark);
+    }
+    .register-form {
+        background-color: var(--card-background-dark);
+        box-shadow: 10px 4px 8px rgba(255, 255, 255, 0.1);
+    }
+    .Choose1, .Choose2 {
+        background-color: var(--secondary-color-dark);
+        color: var(--text-color-dark);
+    }
+    .Choose1:hover, .Choose2:hover {
+        background-color: var(--accent-color-dark);
+        color: var(--button-text-color-dark);
+    }
+    .option h2 {
+        color: var(--accent-color-dark);
+    }
+    .option .ptex {
+        color: var(--text-color-dark);
+    }
+
+
+    footer.page-footer, .blue-grey.darken-3 {
+        background-color: var(--footer-background-dark) !important;
+        color: var(--text-color-dark);
+    }
+    footer.page-footer .white-text, footer.page-footer a.grey-text.text-lighten-3 {
+        color: var(--text-color-dark) !important;
+    }
+    footer.page-footer a.grey-text.text-lighten-3:hover {
+        color: var(--accent-color-dark) !important;
+    }
+    .footer-social .Btn .svgContainer svg path {
+        fill: var(--text-color-dark);
+    }
+    .footer-social .Btn:hover .BG {
+        background: var(--accent-color-dark);
+    }
+
+
+    /* Chatbox dark theme */
+    #chatBox.card-panel {
+        background-color: var(--primary-color-dark);
+        border: 1px solid var(--secondary-color-dark);
+    }
+    #chatBox .chat-header {
+        color: var(--accent-color-dark);
+    }
+    #chatBox #messages {
+        color: var(--text-color-dark);
+    }
+    #chatBox .close-button {
+        color: var(--text-color-dark);
+    }
+
+
+    /* About.html specific dark theme */
+    .header {
+        background-color: var(--nav-background-dark);
+    }
+    .header .nav a {
+        color: var(--text-color-dark);
+    }
+    .header .nav a:hover {
+        color: var(--accent-color-dark);
+    }
+    .seccion { /* Generic section styling */
+        background-color: var(--background-color-dark);
+    }
+    .seccion .contenido .texto h2, .seccion .titulo-seccion {
+        color: var(--accent-color-dark);
+    }
+    .seccion .contenido .texto p, .seccion .card p, .seccion .miembro-equipo p {
+        color: var(--text-color-dark);
+    }
+     .seccion .card, .seccion .miembro-equipo {
+        background-color: var(--card-background-dark);
+        border: 1px solid var(--secondary-color-dark);
+    }
+    .seccion .card h3, .seccion .miembro-equipo h3 {
+        color: var(--accent-color-dark);
+    }
+    footer#contacto { /* Footer on About page */
+        background-color: var(--footer-background-dark);
+    }
+    footer#contacto h3, footer#contacto p {
+        color: var(--text-color-dark);
+    }
+    footer#contacto .iconos-redes a img {
+        filter: invert(80%) sepia(10%) saturate(200%) hue-rotate(0deg) brightness(150%) contrast(100%); /* Adjust to make icons visible */
+    }
+
+
+    /* Caracteristicas.html specific dark theme */
+    .Banner .navbar { /* Navbar on Caracteristicas page */
+        background-color: var(--nav-background-dark) !important; /* Override existing if any */
+    }
+    .Banner .navbar .menu a, .Banner .navbar .dropdown-toggle {
+        color: var(--text-color-dark);
+    }
+    .Banner .navbar .menu a:hover, .Banner .navbar .dropdown-toggle:hover {
+        color: var(--accent-color-dark);
+    }
+    .dropdown-menu {
+        background-color: var(--primary-color-dark);
+        border: 1px solid var(--secondary-color-dark);
+    }
+    .dropdown-menu a {
+        color: var(--text-color-dark);
+    }
+    .dropdown-menu a:hover {
+        background-color: var(--secondary-color-dark);
+        color: var(--accent-color-dark);
+    }
+    .Introduction, .Mision, .Vision { /* Sections on Caracteristicas page */
+        background-color: var(--background-color-dark);
+    }
+    .Introduction h1, .Mision h1, .Vision h1 {
+        color: var(--accent-color-dark);
+    }
+    .Introduction p, .Mision p, .Vision p {
+        color: var(--text-color-dark);
+    }
+    .footer-section { /* Footer on Caracteristicas page */
+        background-color: var(--footer-background-dark);
+    }
+    .footer-section .footer-menu a {
+        color: var(--text-color-dark);
+    }
+     .footer-section .footer-menu a:hover {
+        color: var(--accent-color-dark);
+    }
+    .footer-section .footer-bottom {
+        color: var(--text-color-dark);
+    }
+
+    /* Conditions.html specific dark theme */
+    /* body will be dark from general styles */
+    .layout-container .text-white { /* This class is used extensively for text */
+        color: var(--text-color-dark) !important;
+    }
+     /* Tailwind specific overrides if needed, for elements not covered by .text-white */
+    .bg-\[\#101a23\] { /* Original dark background for the page */
+        background-color: var(--background-color-dark) !important;
+    }
+    /* Titles and paragraph text are covered by .text-white */
+    /* Ensure links are visible if any custom link colors are used */
+
+    /* General Materialize components adjustments for dark mode */
+    .input-field input[type=text]:focus + label,
+    .input-field textarea:focus + label {
+        color: var(--accent-color-dark) !important;
+    }
+    .input-field input[type=text]:focus,
+    .input-field textarea:focus {
+        border-bottom: 1px solid var(--accent-color-dark) !important;
+        box-shadow: 0 1px 0 0 var(--accent-color-dark) !important;
+    }
+    input, select, textarea {
+        background-color: var(--input-background-dark) !important;
+        color: var(--input-text-color-dark) !important;
+        border-bottom-color: var(--secondary-color-dark) !important;
+    }
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: var(--placeholder-color-dark) !important;
+      opacity: 1; /* Firefox */
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: var(--placeholder-color-dark) !important;
+    }
+    ::-ms-input-placeholder { /* Microsoft Edge */
+      color: var(--placeholder-color-dark) !important;
+    }
+
+    /* Ensure good contrast for specific elements if they become hard to read */
+    .sub-text { /* From index.html */
+        color: #b0b0b0; /* Lighter grey for sub-text if needed */
+    }
+    .video-container h5 { /* From index.html */
+        color: var(--accent-color-dark) !important;
+    }
+}
