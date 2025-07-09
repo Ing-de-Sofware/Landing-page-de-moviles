@@ -17,6 +17,8 @@
 
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="css/styles-index.css">
+    <!-- Link to Dark Mode CSS file -->
+    <link rel="stylesheet" href="css/dark-mode.css">
 </head>
 
 <body>
@@ -56,7 +58,7 @@
             <li><a href="https://parkingnow-14273.web.app" class="btn yellow darken-2" style="font-family: Kalam, serif;" data-i18n="registerAccount" aria-label="Go to register page">Register Account</a></li>
             <!-- Language Switcher Button -->
             <li>
-                <button id="languageSwitcher" class="btn grey darken-3 white-text" style="margin-left: 15px;" aria-label="Switch language to Spanish">Español</button>
+                <button id="languageSwitcher" class="languageSwitcher btn grey darken-3 white-text" style="margin-left: 15px;" aria-label="Switch language">Español</button>
             </li>
         </ul>
     </div>
@@ -67,9 +69,12 @@
     <li><a href="Caracteristicas.html" class="NT" data-i18n="features" aria-label="View Features">Features</a></li>
     <li><a href="#" class="NT" data-i18n="reserveSpace" aria-label="Reserve parking space">Reserve Space</a></li>
     <li><a href="About.html" class="NT" data-i18n="contactUs" aria-label="Contact us">Contact Us</a></li>
-    <li><a href="conditions.html" class="NT" data-i18n="termsConditions" aria-label="Terms and Conditions">Terms&nbsp;and&nbsp;Conditions</a></li>
+    <li><a href="Conditions.html" class="NT" data-i18n="termsConditions" aria-label="Terms and Conditions">Terms&nbsp;and&nbsp;Conditions</a></li>
     <li><a href="https://parkingnow-14273.web.app" class="btn yellow darken-1" data-i18n="login" aria-label="Go to login page">Log in</a></li>
     <li><a href="https://parkingnow-14273.web.app" class="btn yellow darken-2" data-i18n="registerAccount" aria-label="Go to register page">Register Account</a></li>
+    <li>
+        <button class="languageSwitcher btn grey darken-3 white-text" style="margin-left: 15px; width: calc(100% - 30px);" aria-label="Switch language">Español</button>
+    </li>
 </ul>
 
 <!-- Hero Section -->
@@ -317,57 +322,67 @@
 <!-- Materialize JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<!-- Custom JS -->
+<!-- Custom JS for i18n -->
+<script src="js/i18n.js"></script>
+
+<!-- Custom JS for page specific functionalities -->
 <script>
+    // Initialize Materialize Sidenav
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        M.Sidenav.init(elems);
+    });
+
     // Toggle chatbox visibility
     const chatButton = document.getElementById('chatButton');
     const chatBox = document.getElementById('chatBox');
     const closeChat = document.getElementById('closeChat');
 
-    chatButton.addEventListener('click', () => {
-        chatBox.classList.toggle('show');
-    });
+    if (chatButton && chatBox && closeChat) {
+        chatButton.addEventListener('click', () => {
+            chatBox.classList.toggle('show');
+        });
 
-    closeChat.addEventListener('click', () => {
-        chatBox.classList.remove('show');
-    });
-
-    // Language Switcher Functionality
-    let currentLanguage = "en";
-
-    async function loadLanguage(lang) {
-        try {
-            const response = await fetch(`i18n/${lang}.json`);
-            const translations = await response.json();
-
-            document.querySelectorAll("[data-i18n]").forEach((element) => {
-                const key = element.getAttribute("data-i18n");
-                const translation = translations[key];
-
-                if (translation) {
-                    if (element.children.length === 0) {
-                        element.textContent = translation;
-                    } else {
-                        console.warn(`⚠️ No se tradujo porque contiene HTML interno: [data-i18n="${key}"]`);
-                    }
-                }
-            });
-
-            // Actualiza el texto del botón de cambio de idioma
-            document.getElementById("languageSwitcher").innerText = lang === "en" ? "Español" : "English";
-        } catch (error) {
-            console.error("❌ Error cargando traducción:", error);
-        }
+        closeChat.addEventListener('click', () => {
+            chatBox.classList.remove('show');
+        });
     }
 
-    document.getElementById("languageSwitcher").addEventListener("click", () => {
-        currentLanguage = currentLanguage === "en" ? "es" : "en";
-        loadLanguage(currentLanguage);
-    });
+    // Chatbot interaction (basic example)
+    function userChoice(option) {
+        const messagesDiv = document.getElementById('messages');
+        let response = "";
+        // Translations for chat responses (can be moved to JSON if more complex)
+        const chatResponses = {
+            en: {
+                parkingAvailability: "Checking parking availability... Please wait.",
+                howToBook: "To book a space, please log in to your account and select 'Reserve Space'.",
+                optimalRoutes: "Optimal routes are calculated based on your current location and destination once you select a parking spot."
+            },
+            es: {
+                parkingAvailability: "Verificando disponibilidad de estacionamiento... Por favor espera.",
+                howToBook: "Para reservar un espacio, por favor inicia sesión en tu cuenta y selecciona 'Reservar Espacio'.",
+                optimalRoutes: "Las rutas óptimas se calculan según tu ubicación actual y destino una vez que seleccionas un lugar de estacionamiento."
+            }
+        };
 
-    document.addEventListener("DOMContentLoaded", () => {
-        loadLanguage(currentLanguage);
-    });
+        const currentLang = document.documentElement.lang.startsWith('es') ? 'es' : 'en'; // Determine current language
+
+        switch (option) {
+            case 'parkingAvailability':
+                response = chatResponses[currentLang].parkingAvailability;
+                break;
+            case 'howToBook':
+                response = chatResponses[currentLang].howToBook;
+                break;
+            case 'optimalRoutes':
+                response = chatResponses[currentLang].optimalRoutes;
+                break;
+            default:
+                response = "I'm sorry, I didn't understand that option.";
+        }
+        messagesDiv.textContent = response; // Update chat message
+    }
 </script>
 
 </body>

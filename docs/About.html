@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en-US"> <!-- Default language -->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sobre Nosotros - ParkingNow</title>
+  <title data-i18n="aboutPageTitle">About Us - ParkingNow</title> <!-- i18n for title -->
   <link rel="stylesheet" href="css/styles-about.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="images/parkingnow.ico" type="image/x-icon">
+  <!-- Link to Dark Mode CSS file -->
+  <link rel="stylesheet" href="css/dark-mode.css">
 </head>
 
 <body>
   <!-- Header -->
   <header class="header">
     <div class="header-container">
-      <img src="images/parkingnow.png" alt="Logo ParkingNow" class="logo" />
+      <a href="index.html"><img src="images/parkingnow.png" alt="Logo ParkingNow" class="logo" /></a>
       <div class="nav-container" style="display: flex; justify-content: center; align-items: center;">
         <nav class="nav">
-          <a href="index.html">Inicio</a>
-          <a href="about.html">Nosotros</a>
-          <a href="#caracteristicas">Características</a>
-          <a href="#contacto">Contacto</a>
+          <a href="index.html" data-i18n="home">Home</a>
+          <a href="About.html" data-i18n="aboutUs">About Us</a>
+          <a href="Caracteristicas.html" data-i18n="features">Features</a>
+          <a href="index.html#contacto" data-i18n="contactUs">Contact</a>
         </nav>
+        <button class="languageSwitcher btn grey darken-3 white-text" style="margin-left: 20px; padding: 10px 15px; border: none; cursor: pointer; border-radius: 5px; background-color: #ffeb3b; color: #333; font-family: 'Kalam', serif;" aria-label="Switch language">Español</button>
       </div>
     </div>
   </header>
@@ -28,11 +32,11 @@
   <section class="seccion mision">
     <div class="contenido">
       <div class="texto">
-        <h2>Misión</h2>
-        <p>Nuestra misión es revolucionar la forma en que las personas encuentran y gestionan espacios de estacionamiento, ofreciendo una solución eficiente, confiable y accesible desde cualquier dispositivo.</p>
+        <h2 data-i18n="missionTitle">Mission</h2>
+        <p data-i18n="missionText">Our mission is to revolutionize the way people find and manage parking spaces, offering an efficient, reliable, and accessible solution from any device.</p>
       </div>
       <div class="imagen">
-        <img src="images/mision.jpg" alt="Imagen de misión">
+        <img src="images/Mision.jpg" alt="Mission Image">
       </div>
     </div>
   </section>
@@ -41,57 +45,90 @@
   <section class="seccion vision">
     <div class="contenido reverse">
       <div class="texto">
-        <h2>Visión</h2>
-        <p>Ser la plataforma líder de estacionamiento inteligente en Latinoamérica, brindando una experiencia segura, rápida y tecnológica tanto para conductores como propietarios.</p>
+        <h2 data-i18n="visionTitle">Vision</h2>
+        <p data-i18n="visionText">To be the leading smart parking platform in Latin America, providing a safe, fast, and technological experience for both drivers and owners.</p>
       </div>
       <div class="imagen">
-        <img src="images/vision.jpg" alt="Imagen de visión">
+        <img src="images/Vision.jpg" alt="Vision Image">
       </div>
     </div>
   </section>
 
-  <!-- Sección Características -->
+  <!-- Sección Características Clave -->
   <section class="seccion caracteristicas" id="caracteristicas">
-    <h2 class="titulo-seccion">Características Clave</h2>
+    <h2 class="titulo-seccion" data-i18n="keyFeaturesTitle">Key Features</h2>
     <div class="grid-caracteristicas">
       <div class="card">
-        <img src="images/reserva en tiempo real.jpg" alt="Reserva en tiempo real" />
-        <h3>Reserva en Tiempo Real</h3>
-        <p>Encuentra y asegura tu espacio de estacionamiento en cuestión de segundos desde cualquier lugar.</p>
+        <img src="images/reserva en tiempo real.jpg" alt="Real-time reservation" />
+        <h3 data-i18n="realTimeReservationTitle">Real-Time Reservation</h3>
+        <p data-i18n="realTimeReservationText">Find and secure your parking space in seconds from anywhere.</p>
       </div>
       <div class="card">
-        <img src="images/gestion.jpg" alt="Gestión para propietarios" />
-        <h3>Gestión Inteligente</h3>
-        <p>Los propietarios pueden monitorear ocupación, establecer precios y recibir pagos con facilidad.</p>
+        <img src="images/gestion.jpg" alt="Management for owners" />
+        <h3 data-i18n="smartManagementTitle">Smart Management</h3>
+        <p data-i18n="smartManagementText">Owners can monitor occupancy, set prices, and receive payments with ease.</p>
       </div>
       <div class="card">
-        <img src="images/negocio .png" alt="Integración empresarial" />
-        <h3>Integración Empresarial</h3>
-        <p>Incorpora nuestro sistema en tu negocio para ofrecer valor agregado a tus clientes.</p>
+        <img src="images/negocio .png" alt="Business integration" />
+        <h3 data-i18n="businessIntegrationTitle">Business Integration</h3>
+        <p data-i18n="businessIntegrationText">Incorporate our system into your business to offer added value to your customers.</p>
       </div>
     </div>
   </section>
+
+  <!-- Team Section -->
+  <section class="seccion equipo">
+    <h2 class="titulo-seccion" data-i18n="ourTeamTitle">Our Team</h2>
+    <div class="grid-equipo">
+      <div class="miembro-equipo">
+        <img src="images/Diego.jpg" alt="Diego Soto">
+        <h3 data-i18n="teamMember1Name">Diego Ulises Soto Quispe</h3>
+        <p data-i18n="teamMember1Desc">I am a 5th-cycle student in the Software Engineering program. I am responsible in the tasks assigned to me and punctual with deadlines. Outside of programming, I enjoy playing basketball, going for walks, playing video games, and riding my bike.</p>
+      </div>
+      <div class="miembro-equipo">
+        <img src="images/Diego_C.jpg" alt="Diego Cacho">
+        <h3 data-i18n="teamMember2Name">Diego Alonso Cacho Seminario</h3>
+        <p data-i18n="teamMember2Desc">My name is Diego Cacho, and I am 19 years old. I am currently in the 5th cycle of my Software Engineering career at UPC. I consider myself a calm and diligent person.</p>
+      </div>
+      <div class="miembro-equipo">
+        <img src="images/Omar.jpeg" alt="Omar Rivera">
+        <h3 data-i18n="teamMember3Name">Omar Harold Rivera Ticllacuri</h3>
+        <p data-i18n="teamMember3Desc">I am a Software Engineering student, 19 years old, currently in the fifth cycle of my career. I am a disciplined and responsible person when it comes to developing software and entertainment projects. I have experience in entertainment software development.</p>
+      </div>
+      <div class="miembro-equipo">
+        <img src="images/Samuel.jpeg" alt="Samuel Molina">
+        <h3 data-i18n="teamMember4Name">Samuel Elias Molina Asencios</h3>
+        <p data-i18n="teamMember4Desc">I am a 7th-cycle student in the Software Engineering program. I really enjoy art and sports. In my free time, I play the piano or go swimming.</p>
+      </div>
+      <div class="miembro-equipo">
+        <img src="images/Rodrigo.png" alt="Rodrigo Liberato">
+        <h3 data-i18n="teamMember5Name">Rodrigo Liberato Saldaña</h3>
+        <p data-i18n="teamMember5Desc">I am a 6th-cycle student in the Software Engineering program. I am a person who values effort and tries to support in every possible way.</p>
+      </div>
+    </div>
+  </section>
+
 
   <!-- Footer -->
   <footer id="contacto">
     <div class="footer-top">
       <div class="contacto">
-        <h3>Contacto</h3>
-        <p>Email: ParkingNowApp@gmail.com</p>
-        <p>Teléfono: +51 924 000 000</p>
-        <p>Dirección: Lima, Perú</p>
+        <h3 data-i18n="contactUs">Contact</h3>
+        <p data-i18n="contactEmail">Email: ParkingNowApp@gmail.com</p>
+        <p data-i18n="contactPhone">Phone: +51 924 000 000</p>
+        <p data-i18n="contactAddress">Address: Lima, Peru</p>
       </div>
       <div class="redes">
-        <div class="redes">
-        <h3>Nuestras redes</h3>
+        <h3 data-i18n="ourNetworks">Our Networks</h3>
         <div class="iconos-redes">
-          <a href="https://github.com/G3-UPC-CC238-346-ParkingNow" target="_blank"><img src="images/github.png" alt="GitHub" /></a>
+          <a href="https://github.com/G3-UPC-CC238-346-ParkingNow" target="_blank"><img src="images/Github.png" alt="GitHub" /></a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 PARKINGNOW. Todos los derechos reservados.</p>
+      <p data-i18n="footerRightsReserved">© 2025 PARKINGNOW. All rights reserved.</p>
     </div>
   </footer>
+  <script src="js/i18n.js"></script>
 </body>
 </html>
