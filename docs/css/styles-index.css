@@ -67,44 +67,149 @@ p.light, p.sub-text, .carousel-description, .app-availability-info p { /* Paragr
 body {
     background-color: var(--background-color);
     color: var(--text-color);
-    font-family: var(--font-body); /* Updated */
+    font-family: var(--font-body);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    line-height: 1.65; /* Improved line height for body text */
+    line-height: 1.65;
 }
 
-nav.nav-wrapper {
-    background-color: var(--nav-background-color) !important;
-    color: var(--nav-text-color);
+/* New Header Styles */
+.site-header {
+    background-color: var(--nav-background-color);
+    padding: 0.8rem 0; /* Adjusted padding */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 1000; /* Ensure header is above other content */
+    width: 100%;
+}
+
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0; /* Increased padding */
 }
-nav.nav-wrapper .brand-logo {
+
+.brand-logo {
+    display: flex;
+    align-items: center;
     color: var(--nav-text-color) !important;
-    font-family: var(--font-titles); /* Kalam for logo */
-    font-size: 2rem; /* Slightly larger logo text */
+    font-family: var(--font-titles);
+    font-size: 1.8rem; /* Adjusted logo size */
+    text-decoration: none;
 }
-nav.nav-wrapper ul a {
-    color: var(--nav-text-color) !important;
-    font-family: var(--font-ui); /* Roboto for nav links */
-    font-size: 1rem; /* Standard nav link size */
-    padding: 0 18px; /* More padding for nav links */
+
+.logo-img {
+    height: 40px; /* Logo image size */
+    margin-right: 0.5rem;
 }
+
+.site-nav .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.site-nav .nav-link {
+    color: var(--nav-text-color);
+    text-decoration: none;
+    font-family: var(--font-ui);
+    font-size: 0.95rem; /* Slightly smaller nav links */
+    padding: 0.8rem 1rem; /* Padding for links */
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 4px;
+    font-weight: 500; /* Medium weight for nav links */
+}
+
+.site-nav .nav-link:hover,
+.site-nav .nav-link.active {
+    color: var(--accent-color); /* Accent color for hover/active */
+    background-color: rgba(255,255,255,0.05); /* Subtle background on hover */
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; /* Space between action items */
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: var(--nav-text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+.btn-icon:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+.btn-icon .material-icons {
+    font-size: 1.5rem; /* Icon size */
+}
+
+.theme-toggle .theme-icon--dark { display: none; }
+.dark-mode-active .theme-toggle .theme-icon--dark { display: inline-block; }
+.dark-mode-active .theme-toggle .theme-icon--light { display: none; }
+
+
+.btn-login, .btn-register {
+    font-family: var(--font-ui);
+    font-weight: 500;
+    text-transform: uppercase; /* Uppercase for buttons */
+    font-size: 0.85rem; /* Button text size */
+    padding: 0.6rem 1.2rem !important; /* Ensure padding overrides Materialize if needed */
+    border-radius: 20px; /* Rounded buttons */
+}
+.btn-login {
+    background-color: var(--accent-color) !important;
+    color: var(--button-text-color) !important;
+}
+.btn-register {
+    background-color: transparent !important;
+    color: var(--accent-color) !important;
+    border: 2px solid var(--accent-color) !important;
+}
+.btn-login:hover, .btn-register:hover {
+    opacity: 0.9;
+}
+
+
+/* Sidenav (Mobile Menu) */
 .sidenav {
     background-color: var(--nav-background-color);
+    padding-top: 1rem;
 }
-.sidenav li > a {
+.sidenav li > a.nav-link { /* Sidenav links */
     color: var(--nav-text-color) !important;
-    font-family: var(--font-ui); /* Roboto for sidenav links */
-}
-
-
-.NT { /* This class seems to be for nav items, ensure it uses UI font */
     font-family: var(--font-ui);
+    font-size: 1.1rem; /* Larger for touch targets */
+    padding: 1rem 1.5rem;
 }
+.sidenav li > a.nav-link.active {
+    background-color: rgba(255,255,255,0.1);
+}
+.sidenav .divider {
+    background-color: rgba(255,255,255,0.2);
+}
+.sidenav .btn.full-width-mobile {
+    display: block;
+    width: calc(100% - 3rem);
+    margin: 0.5rem 1.5rem;
+    text-align: center;
+}
+.sidenav .mobile-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 1.5rem;
+}
+
 
 /* Hero Section */
 #index-banner {

@@ -1,332 +1,419 @@
 /* Dark Mode Styles */
+
+/* Define dark theme variables when .dark-mode-active is on <html> */
+html.dark-mode-active {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --primary-color: #1e1e1e; /* For cards, darker sections */
+    --secondary-color: #333333; /* For accents, borders, secondary backgrounds */
+    --accent-color: #ffeb3b; /* Yellow accent */
+    --link-color: #bb86fc;
+    --nav-background-color: #1f2937; /* Specific for nav/header */
+    --nav-text-color: #e0e0e0;
+    --footer-background-color: #1f2937; /* Specific for footer */
+    --footer-text-color: #e0e0e0;
+    --card-background-color: #1e1e1e;
+    --card-text-color: #e0e0e0;
+    --button-background-color: var(--accent-color); /* Yellow */
+    --button-text-color: #121212; /* Dark text for yellow buttons */
+    --input-background-color: #2c2c2c;
+    --input-text-color: #e0e0e0;
+    --placeholder-color: #757575;
+
+    /* Specific variables for About page, if they need to differ from global dark */
+    --about-background-color: #121212;
+    --about-text-color: #e0e0e0;
+    --about-header-bg: var(--nav-background-color);
+    --about-header-text: var(--nav-text-color);
+    --about-accent-color: var(--accent-color);
+    --about-section-odd-bg: #1e1e1e;
+    --about-section-even-bg: #151515; /* Slightly different dark for variation */
+    --about-title-color: var(--accent-color);
+    --about-paragraph-color: #c0c0c0; /* Lighter grey for paragraphs */
+    --about-card-bg: #1e1e1e;
+    --about-card-shadow: rgba(255,255,255,0.05);
+    --about-subtitle-color: var(--accent-color);
+    --about-card-text-color: #c0c0c0;
+    --about-footer-bg: var(--footer-background-color);
+    --about-footer-text: var(--footer-text-color);
+    --about-footer-title-color: var(--accent-color);
+    --about-footer-divider: var(--secondary-color);
+
+    /* Specific variables for Caracteristicas page */
+    --caracteristicas-background-color: #121212;
+    --caracteristicas-text-color: #e0e0e0;
+    --caracteristicas-banner-bg: var(--nav-background-color);
+    --caracteristicas-banner-text: var(--nav-text-color);
+    --caracteristicas-accent-color: var(--accent-color);
+    --caracteristicas-dropdown-bg: #2a2a2a; /* Darker dropdown */
+    --caracteristicas-title-color: var(--accent-color);
+    --caracteristicas-paragraph-color: #c0c0c0;
+    --caracteristicas-footer-bg: var(--footer-background-color);
+    --caracteristicas-footer-text: var(--footer-text-color);
+    --caracteristicas-footer-divider: var(--secondary-color);
+}
+
+/* General body styles for dark mode - these will use the re-defined global vars */
+html.dark-mode-active body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Header & Nav specific dark styles (if not already covered by var changes) */
+html.dark-mode-active .site-header {
+    background-color: var(--nav-background-color);
+    box-shadow: 0 2px 8px rgba(255,255,255,0.05); /* Lighter shadow */
+}
+html.dark-mode-active .brand-logo,
+html.dark-mode-active .site-nav .nav-link,
+html.dark-mode-active .btn-icon,
+html.dark-mode-active .sidenav li > a.nav-link {
+    color: var(--nav-text-color) !important;
+}
+html.dark-mode-active .site-nav .nav-link:hover,
+html.dark-mode-active .site-nav .nav-link.active {
+    color: var(--accent-color) !important;
+    background-color: rgba(255,255,255,0.08);
+}
+html.dark-mode-active .btn-icon:hover {
+    background-color: rgba(255,255,255,0.12);
+}
+html.dark-mode-active .btn-register {
+    color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+}
+html.dark-mode-active .sidenav {
+    background-color: var(--nav-background-color);
+}
+
+
+/* Index Page Specific Dark Mode Styles */
+html.dark-mode-active #index-banner {
+    background-color: var(--primary-color); /* Uses the dark primary color */
+}
+html.dark-mode-active #index-banner h1 {
+    color: var(--accent-color);
+}
+html.dark-mode-active #index-banner p {
+    color: var(--text-color); /* General dark mode text */
+}
+
+html.dark-mode-active .card { /* General card style */
+    background-color: var(--card-background-color);
+}
+html.dark-mode-active .card .card-title,
+html.dark-mode-active .card p {
+    color: var(--card-text-color);
+}
+html.dark-mode-active .card .card-action a {
+    color: var(--link-color); /* Dark mode link color */
+}
+
+html.dark-mode-active .benefits-section {
+    background-color: var(--secondary-color);
+}
+html.dark-mode-active .benefits-section h2,
+html.dark-mode-active .benefit h5 { /* Titles within benefit cards */
+    color: var(--accent-color);
+}
+html.dark-mode-active .benefit {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+html.dark-mode-active .promotions-section h2,
+html.dark-mode-active .videos-section h2,
+html.dark-mode-active h2[data-i18n="safetyTitle"] { /* Target by data-i18n */
+    color: var(--accent-color);
+}
+html.dark-mode-active .promotions-section .promotion,
+html.dark-mode-active .promotions-section .promotion2 {
+    background-color: var(--card-background-color);
+}
+html.dark-mode-active .promotions-section .promotion h3,
+html.dark-mode-active .promotions-section .promotion2 h3 {
+    color: var(--accent-color);
+}
+html.dark-mode-active .promotions-section .promotion p,
+html.dark-mode-active .promotions-section .promotion2 p {
+    color: var(--text-color);
+}
+
+html.dark-mode-active .cta-section {
+    background-color: #000000; /* Keep very dark */
+    color: var(--text-color);
+}
+html.dark-mode-active .cta-title,
+html.dark-mode-active .cta-subtitle {
+    color: var(--text-color);
+}
+
+html.dark-mode-active .register_p {
+    background: linear-gradient(to right, #1e2732, #151b23); /* Darker gradient */
+}
+html.dark-mode-active .register_p .container_r {
+    background-color: var(--primary-color);
+    box-shadow: 12px 12px 2px 1px rgba(255,255,255,0.03);
+}
+html.dark-mode-active .register-form { /* Inside register_p */
+    background-color: var(--card-background-color);
+    box-shadow: 10px 4px 8px rgba(255,255,255,0.08);
+}
+html.dark-mode-active .Choose1, html.dark-mode-active .Choose2 {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+html.dark-mode-active .Choose1:hover, html.dark-mode-active .Choose2:hover {
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+}
+html.dark-mode-active .option h2 {
+    color: var(--accent-color);
+}
+html.dark-mode-active .option .ptex {
+    color: var(--text-color);
+}
+
+html.dark-mode-active footer.page-footer {
+    background-color: var(--footer-background-color) !important;
+    color: var(--footer-text-color);
+}
+html.dark-mode-active footer.page-footer .white-text,
+html.dark-mode-active footer.page-footer a.grey-text.text-lighten-3 {
+    color: var(--footer-text-color) !important;
+}
+html.dark-mode-active footer.page-footer a.grey-text.text-lighten-3:hover {
+    color: var(--accent-color) !important;
+}
+html.dark-mode-active .footer-social .Btn .svgContainer svg path {
+    fill: var(--footer-text-color);
+}
+html.dark-mode-active .footer-social .Btn:hover .BG {
+    background: var(--accent-color);
+}
+
+html.dark-mode-active #chatBox.card-panel {
+    background-color: var(--card-background-color);
+    border: 1px solid var(--secondary-color);
+}
+html.dark-mode-active #chatBox .chat-header span {
+    color: var(--accent-color);
+}
+html.dark-mode-active #chatBox #messages,
+html.dark-mode-active #chatBox .close-button {
+    color: var(--text-color);
+}
+
+/* About.html specific dark theme (using its own vars now overridden by html.dark-mode-active) */
+html.dark-mode-active .header { /* About page header if it has this class and not site-header */
+    background-color: var(--about-header-bg);
+}
+html.dark-mode-active .header .nav a {
+    color: var(--about-header-text);
+}
+html.dark-mode-active .header .nav a:hover {
+    color: var(--about-accent-color);
+}
+html.dark-mode-active .seccion {
+    background-color: var(--about-background-color); /* Uses the overridden --about-background-color */
+}
+html.dark-mode-active .seccion:nth-child(odd) {
+    background-color: var(--about-section-odd-bg);
+}
+html.dark-mode-active .seccion:nth-child(even) {
+    background-color: var(--about-section-even-bg);
+}
+html.dark-mode-active .seccion .contenido .texto h2,
+html.dark-mode-active .seccion .titulo-seccion {
+    color: var(--about-title-color);
+}
+html.dark-mode-active .seccion .contenido .texto p,
+html.dark-mode-active .seccion .card p,
+html.dark-mode-active .seccion .miembro-equipo p {
+    color: var(--about-paragraph-color);
+}
+html.dark-mode-active .seccion .card,
+html.dark-mode-active .seccion .miembro-equipo {
+    background-color: var(--about-card-bg);
+    border: 1px solid var(--secondary-color); /* Use global secondary */
+    box-shadow: var(--about-card-shadow);
+}
+html.dark-mode-active .seccion .card h3,
+html.dark-mode-active .seccion .miembro-equipo h3 {
+    color: var(--about-subtitle-color);
+}
+html.dark-mode-active footer#contacto {
+    background-color: var(--about-footer-bg);
+}
+html.dark-mode-active footer#contacto h3,
+html.dark-mode-active footer#contacto p {
+    color: var(--about-footer-text);
+}
+html.dark-mode-active footer#contacto .iconos-redes a img {
+    filter: invert(80%) sepia(10%) saturate(100%) hue-rotate(180deg) brightness(1.5) contrast(0.8); /* Adjusted filter for better visibility */
+}
+
+
+/* Caracteristicas.html specific dark theme */
+html.dark-mode-active .Banner { /* .Banner is the header in Caracteristicas.html */
+    background-color: var(--caracteristicas-banner-bg) !important;
+}
+html.dark-mode-active .Banner .navbar .menu a,
+html.dark-mode-active .Banner .navbar .dropdown-toggle {
+    color: var(--caracteristicas-banner-text);
+}
+html.dark-mode-active .Banner .navbar .menu a:hover,
+html.dark-mode-active .Banner .navbar .dropdown-toggle:hover {
+    color: var(--caracteristicas-accent-color); /* Text color change on hover */
+    background-color: rgba(255,255,255,0.1); /* Subtle background */
+}
+html.dark-mode-active .dropdown-menu { /* Dropdown in Caracteristicas nav */
+    background-color: var(--caracteristicas-dropdown-bg);
+    border: 1px solid var(--secondary-color);
+}
+html.dark-mode-active .dropdown-menu a {
+    color: var(--caracteristicas-banner-text);
+}
+html.dark-mode-active .dropdown-menu a:hover {
+    background-color: var(--secondary-color);
+    color: var(--caracteristicas-accent-color);
+}
+html.dark-mode-active .Introduction,
+html.dark-mode-active .Mision,
+html.dark-mode-active .Vision {
+    background-color: var(--caracteristicas-background-color);
+}
+html.dark-mode-active .Introduction h1,
+html.dark-mode-active .Mision h1,
+html.dark-mode-active .Vision h1 {
+    color: var(--caracteristicas-title-color);
+}
+html.dark-mode-active .Introduction p,
+html.dark-mode-active .Mision p,
+html.dark-mode-active .Vision p {
+    color: var(--caracteristicas-paragraph-color);
+}
+html.dark-mode-active .footer-section { /* Footer on Caracteristicas page */
+    background-color: var(--caracteristicas-footer-bg);
+}
+html.dark-mode-active .footer-section .footer-menu a {
+    color: var(--caracteristicas-footer-text);
+}
+html.dark-mode-active .footer-section .footer-menu a:hover {
+    color: var(--caracteristicas-accent-color);
+}
+html.dark-mode-active .footer-section .footer-bottom {
+    color: var(--caracteristicas-footer-text);
+    border-top-color: var(--caracteristicas-footer-divider);
+}
+
+/* Conditions.html specific dark theme */
+html.dark-mode-active .bg-\[\#101a23\] { /* Tailwind class from original Conditions */
+    background-color: var(--background-color) !important; /* Global dark bg */
+}
+html.dark-mode-active .text-white { /* Tailwind class */
+    color: var(--text-color) !important; /* Global dark text */
+}
+
+
+/* General Materialize components adjustments for dark mode (if not covered by variable overrides) */
+html.dark-mode-active .input-field input[type=text]:focus + label,
+html.dark-mode-active .input-field textarea:focus + label {
+    color: var(--accent-color) !important;
+}
+html.dark-mode-active .input-field input[type=text]:focus,
+html.dark-mode-active .input-field textarea:focus {
+    border-bottom: 1px solid var(--accent-color) !important;
+    box-shadow: 0 1px 0 0 var(--accent-color) !important;
+}
+html.dark-mode-active input,
+html.dark-mode-active select,
+html.dark-mode-active textarea {
+    background-color: var(--input-background-color) !important;
+    color: var(--input-text-color) !important;
+    border-bottom-color: var(--secondary-color) !important;
+}
+html.dark-mode-active ::placeholder {
+  color: var(--placeholder-color) !important;
+  opacity: 1;
+}
+html.dark-mode-active :-ms-input-placeholder {
+  color: var(--placeholder-color) !important;
+}
+html.dark-mode-active ::-ms-input-placeholder {
+  color: var(--placeholder-color) !important;
+}
+
+html.dark-mode-active .sub-text {
+    color: #b0b0b0;
+}
+html.dark-mode-active .video-container h5 {
+    color: var(--accent-color) !important;
+}
+
+/* Carousel Dark Mode Styles (ensure these use global dark vars) */
+html.dark-mode-active .app-mockups-carousel-section {
+    background-color: var(--background-color);
+}
+html.dark-mode-active .carousel-block {
+    background-color: var(--card-background-color);
+    box-shadow: 0 6px 20px rgba(255,255,255,0.05);
+}
+html.dark-mode-active .carousel-title {
+    color: var(--accent-color);
+}
+html.dark-mode-active .carousel-description {
+    color: var(--text-color);
+}
+html.dark-mode-active .carousel-container {
+    background-color: var(--background-color);
+}
+html.dark-mode-active .carousel-slide img {
+    box-shadow: 0 4px 12px rgba(255,255,255,0.08);
+}
+html.dark-mode-active .carousel-button {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+html.dark-mode-active .carousel-button:hover {
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+}
+html.dark-mode-active .carousel-button:focus {
+    outline: 2px solid var(--accent-color);
+}
+html.dark-mode-active .app-availability-info {
+    background-color: var(--primary-color);
+}
+html.dark-mode-active .app-availability-info p {
+    color: var(--text-color);
+}
+
+/* Fallback for systems that prefer dark mode but JS hasn't run or there's no manual override */
 @media (prefers-color-scheme: dark) {
-    :root {
-        /* General dark theme colors */
-        --background-color-dark: #121212;
-        --text-color-dark: #e0e0e0;
-        --primary-color-dark: #1e1e1e; /* Slightly lighter than background for cards/sections */
-        --secondary-color-dark: #333333; /* For borders, accents */
-        --accent-color-dark: #ffeb3b; /* Yellow accent, ensure it has good contrast */
-        --link-color-dark: #bb86fc; /* A common link color in dark themes */
-        --nav-background-dark: #1f2937; /* Darker shade for nav */
-        --footer-background-dark: #1f2937;
-        --card-background-dark: #1e1e1e;
-        --button-background-dark: var(--accent-color-dark);
-        --button-text-color-dark: #121212; /* Dark text on light accent button */
-        --input-background-dark: #2c2c2c;
-        --input-text-color-dark: #e0e0e0;
-        --placeholder-color-dark: #757575;
+    html:not(.dark-mode-active) { /* Apply only if JS hasn't set a specific theme */
+        --background-color: #121212;
+        --text-color: #e0e0e0;
+        --primary-color: #1e1e1e;
+        --secondary-color: #333333;
+        --accent-color: #ffeb3b;
+        --link-color: #bb86fc;
+        --nav-background-color: #1f2937;
+        --nav-text-color: #e0e0e0;
+        --footer-background-color: #1f2937;
+        --footer-text-color: #e0e0e0;
+        --card-background-color: #1e1e1e;
+        --card-text-color: #e0e0e0;
+        --button-background-color: var(--accent-color);
+        --button-text-color: #121212;
+        --input-background-color: #2c2c2c;
+        --input-text-color: #e0e0e0;
+        --placeholder-color: #757575;
     }
 
-    body {
-        background-color: var(--background-color-dark);
-        color: var(--text-color-dark);
-    }
-
-    nav.nav-wrapper, .blue-grey.darken-3 {
-        background-color: var(--nav-background-dark) !important;
-    }
-
-    .nav-wrapper .brand-logo, .nav-wrapper ul a, .sidenav li a, .material-icons {
-        color: var(--text-color-dark) !important;
-    }
-    .sidenav {
-        background-color: var(--primary-color-dark);
-    }
-
-    .btn, .btn-large, .btn-floating {
-        background-color: var(--button-background-dark) !important;
-        color: var(--button-text-color-dark) !important;
-    }
-     .btn.grey.darken-3 { /* Language switcher */
-        background-color: var(--secondary-color-dark) !important;
-        color: var(--text-color-dark) !important;
-    }
-
-
-    #index-banner {
-        background-color: var(--primary-color-dark);
-        color: var(--text-color-dark);
-    }
-    #index-banner h1 {
-        color: var(--accent-color-dark);
-    }
-
-    .card {
-        background-color: var(--card-background-dark);
-        color: var(--text-color-dark);
-    }
-    .card .card-title, .card p {
-        color: var(--text-color-dark);
-    }
-    .card .card-action a {
-        color: var(--accent-color-dark);
-    }
-
-
-    .benefits-section {
-        background-color: var(--secondary-color-dark); /* Darker shade for this section */
-    }
-    .benefits-section h2 {
-        color: var(--accent-color-dark);
-    }
-    .benefit {
-        background-color: var(--primary-color-dark); /* Card-like elements */
-        color: var(--text-color-dark);
-    }
-
-    .promotions-section h2, .videos-section h2 {
-        color: var(--accent-color-dark);
-    }
-     .promotions-section .promotion, .promotions-section .promotion2 {
-        background-color: var(--primary-color-dark);
-        color: var(--text-color-dark);
-    }
-    .promotions-section .promotion h3, .promotions-section .promotion2 h3 {
-        color: var(--accent-color-dark);
-    }
-    .promotions-section .promotion p, .promotions-section .promotion2 p {
-        color: var(--text-color-dark);
-    }
-
-
-    .cta-section {
-        background-color: #000000; /* Keep it black or very dark */
-        color: var(--text-color-dark);
-    }
-    .cta-title, .cta-subtitle {
-        color: var(--text-color-dark);
-    }
-     .cta-button a {
-        color: var(--button-text-color-dark);
-    }
-
-
-    .register_p {
-        background: linear-gradient(to right, #2c3e50, #1a252f); /* Darker gradient */
-    }
-    .register_p .container_r {
-        background-color: var(--primary-color-dark);
-        box-shadow: 12px 12px 2px 1px rgba(255, 255, 255, 0.05); /* Lighter shadow for dark bg */
-    }
-    .register_p .cta-title {
-        color: var(--text-color-dark);
-    }
-    .register-form {
-        background-color: var(--card-background-dark);
-        box-shadow: 10px 4px 8px rgba(255, 255, 255, 0.1);
-    }
-    .Choose1, .Choose2 {
-        background-color: var(--secondary-color-dark);
-        color: var(--text-color-dark);
-    }
-    .Choose1:hover, .Choose2:hover {
-        background-color: var(--accent-color-dark);
-        color: var(--button-text-color-dark);
-    }
-    .option h2 {
-        color: var(--accent-color-dark);
-    }
-    .option .ptex {
-        color: var(--text-color-dark);
-    }
-
-
-    footer.page-footer, .blue-grey.darken-3 {
-        background-color: var(--footer-background-dark) !important;
-        color: var(--text-color-dark);
-    }
-    footer.page-footer .white-text, footer.page-footer a.grey-text.text-lighten-3 {
-        color: var(--text-color-dark) !important;
-    }
-    footer.page-footer a.grey-text.text-lighten-3:hover {
-        color: var(--accent-color-dark) !important;
-    }
-    .footer-social .Btn .svgContainer svg path {
-        fill: var(--text-color-dark);
-    }
-    .footer-social .Btn:hover .BG {
-        background: var(--accent-color-dark);
-    }
-
-
-    /* Chatbox dark theme */
-    #chatBox.card-panel {
-        background-color: var(--primary-color-dark);
-        border: 1px solid var(--secondary-color-dark);
-    }
-    #chatBox .chat-header {
-        color: var(--accent-color-dark);
-    }
-    #chatBox #messages {
-        color: var(--text-color-dark);
-    }
-    #chatBox .close-button {
-        color: var(--text-color-dark);
-    }
-
-
-    /* About.html specific dark theme */
-    .header {
-        background-color: var(--nav-background-dark);
-    }
-    .header .nav a {
-        color: var(--text-color-dark);
-    }
-    .header .nav a:hover {
-        color: var(--accent-color-dark);
-    }
-    .seccion { /* Generic section styling */
-        background-color: var(--background-color-dark);
-    }
-    .seccion .contenido .texto h2, .seccion .titulo-seccion {
-        color: var(--accent-color-dark);
-    }
-    .seccion .contenido .texto p, .seccion .card p, .seccion .miembro-equipo p {
-        color: var(--text-color-dark);
-    }
-     .seccion .card, .seccion .miembro-equipo {
-        background-color: var(--card-background-dark);
-        border: 1px solid var(--secondary-color-dark);
-    }
-    .seccion .card h3, .seccion .miembro-equipo h3 {
-        color: var(--accent-color-dark);
-    }
-    footer#contacto { /* Footer on About page */
-        background-color: var(--footer-background-dark);
-    }
-    footer#contacto h3, footer#contacto p {
-        color: var(--text-color-dark);
-    }
-    footer#contacto .iconos-redes a img {
-        filter: invert(80%) sepia(10%) saturate(200%) hue-rotate(0deg) brightness(150%) contrast(100%); /* Adjust to make icons visible */
-    }
-
-
-    /* Caracteristicas.html specific dark theme */
-    .Banner .navbar { /* Navbar on Caracteristicas page */
-        background-color: var(--nav-background-dark) !important; /* Override existing if any */
-    }
-    .Banner .navbar .menu a, .Banner .navbar .dropdown-toggle {
-        color: var(--text-color-dark);
-    }
-    .Banner .navbar .menu a:hover, .Banner .navbar .dropdown-toggle:hover {
-        color: var(--accent-color-dark);
-    }
-    .dropdown-menu {
-        background-color: var(--primary-color-dark);
-        border: 1px solid var(--secondary-color-dark);
-    }
-    .dropdown-menu a {
-        color: var(--text-color-dark);
-    }
-    .dropdown-menu a:hover {
-        background-color: var(--secondary-color-dark);
-        color: var(--accent-color-dark);
-    }
-    .Introduction, .Mision, .Vision { /* Sections on Caracteristicas page */
-        background-color: var(--background-color-dark);
-    }
-    .Introduction h1, .Mision h1, .Vision h1 {
-        color: var(--accent-color-dark);
-    }
-    .Introduction p, .Mision p, .Vision p {
-        color: var(--text-color-dark);
-    }
-    .footer-section { /* Footer on Caracteristicas page */
-        background-color: var(--footer-background-dark);
-    }
-    .footer-section .footer-menu a {
-        color: var(--text-color-dark);
-    }
-     .footer-section .footer-menu a:hover {
-        color: var(--accent-color-dark);
-    }
-    .footer-section .footer-bottom {
-        color: var(--text-color-dark);
-    }
-
-    /* Conditions.html specific dark theme */
-    /* body will be dark from general styles */
-    .layout-container .text-white { /* This class is used extensively for text */
-        color: var(--text-color-dark) !important;
-    }
-     /* Tailwind specific overrides if needed, for elements not covered by .text-white */
-    .bg-\[\#101a23\] { /* Original dark background for the page */
-        background-color: var(--background-color-dark) !important;
-    }
-    /* Titles and paragraph text are covered by .text-white */
-    /* Ensure links are visible if any custom link colors are used */
-
-    /* General Materialize components adjustments for dark mode */
-    .input-field input[type=text]:focus + label,
-    .input-field textarea:focus + label {
-        color: var(--accent-color-dark) !important;
-    }
-    .input-field input[type=text]:focus,
-    .input-field textarea:focus {
-        border-bottom: 1px solid var(--accent-color-dark) !important;
-        box-shadow: 0 1px 0 0 var(--accent-color-dark) !important;
-    }
-    input, select, textarea {
-        background-color: var(--input-background-dark) !important;
-        color: var(--input-text-color-dark) !important;
-        border-bottom-color: var(--secondary-color-dark) !important;
-    }
-    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: var(--placeholder-color-dark) !important;
-      opacity: 1; /* Firefox */
-    }
-    :-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: var(--placeholder-color-dark) !important;
-    }
-    ::-ms-input-placeholder { /* Microsoft Edge */
-      color: var(--placeholder-color-dark) !important;
-    }
-
-    /* Ensure good contrast for specific elements if they become hard to read */
-    .sub-text { /* From index.html */
-        color: #b0b0b0; /* Lighter grey for sub-text if needed */
-    }
-    .video-container h5 { /* From index.html */
-        color: var(--accent-color-dark) !important;
-    }
-
-    /* Carousel Dark Mode Styles */
-    .app-mockups-carousel-section {
-        background-color: var(--background-color-dark); /* Match page background */
-    }
-    .carousel-block {
-        background-color: var(--card-background-dark); /* Dark card background */
-        box-shadow: 0 6px 20px rgba(255,255,255,0.05); /* Lighter shadow for dark mode */
-    }
-    .carousel-title {
-        color: var(--accent-color-dark); /* Accent color for titles */
-    }
-    .carousel-description {
-        color: var(--text-color-dark); /* Standard dark mode text color */
-    }
-    .carousel-container {
-        background-color: var(--background-color-dark); /* Match section background */
-    }
-    .carousel-slide img {
-        box-shadow: 0 4px 12px rgba(255,255,255,0.08); /* Lighter shadow for images on dark bg */
-    }
-    .carousel-button {
-        background-color: var(--secondary-color-dark); /* Darker buttons */
-        color: var(--text-color-dark);
-    }
-    .carousel-button:hover {
-        background-color: var(--accent-color-dark);
-        color: var(--button-text-color-dark); /* Dark text on light accent */
-    }
-    .carousel-button:focus {
-        outline: 2px solid var(--accent-color-dark);
-    }
-    .app-availability-info {
-        background-color: var(--primary-color-dark); /* Slightly different dark shade for this info box */
-    }
-    .app-availability-info p {
-        color: var(--text-color-dark);
-    }
+    html:not(.dark-mode-active) body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+    /* Add other essential global dark mode styles here if needed for the prefers-color-scheme only case */
 }

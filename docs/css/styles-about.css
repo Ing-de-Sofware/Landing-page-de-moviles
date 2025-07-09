@@ -1,13 +1,12 @@
 /* ===============================
-   Base y variables
+   Base y variables (usará las globales de dark-mode.css y styles-index.css)
 ================================= */
 :root {
-  --azul-noche: #2d333f;
-  --amarillo: #FFD700;
-  --gris: #828282;
-  --gris-claro: #f2f2f2;
-  --blanco: #ffffff;
-  --fuente: 'Inter', sans-serif;
+  /* Variables específicas de About si son necesarias, sino usar globales */
+  --about-section-padding: 4rem 2rem; /* Ajustado padding */
+  --about-title-size: 2.5rem; /* Ajustado */
+  --about-text-size: 1.05rem; /* Ajustado */
+  --about-card-h3-size: 1.3rem; /* Ajustado */
 }
 
 * {
@@ -17,276 +16,1048 @@
 }
 
 body {
-  font-family: var(--fuente);
-  background-color: var(--blanco);
-  color: var(--azul-noche);
-  line-height: 1.75;
+  font-family: var(--font-body, 'Roboto', sans-serif); /* Usar variable global o fallback */
+  background-color: var(--background-color); /* Variable global */
+  color: var(--text-color); /* Variable global */
+  line-height: 1.7; /* Mejorado */
 }
 
 img {
   max-width: 100%;
   display: block;
-  border-radius: 16px;
+  border-radius: 10px; /* Suavizado */
   object-fit: cover;
 }
 
-.logo {
-  max-height: 60px;
-  width: auto;
-  display: block;
+.container { /* Contenedor general para centrar contenido */
+    width: 90%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-
 /* ===============================
-   Header
+   Header (estilos ahora globales en styles-index.css o header.css)
+   Se quitaron los estilos específicos de .header, .header-container, .nav de aquí
+   ya que se manejarán globalmente.
 ================================= */
-.header {
-  background-color: var(--blanco);
-  border-bottom: 1px solid var(--gris-claro);
-  padding: 1rem 2rem;
-}
-
-.header-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.nav {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.nav a {
-  text-decoration: none;
-  font-weight: 600;
-  color: var(--azul-noche);
-  transition: color 0.3s ease;
-}
-
-.nav a:hover,
-.nav a.active {
-  color: #FFD700;
-  letter-spacing: 0.5px;
-}
 
 /* ===============================
-   Secciones Misión y Visión
+   Secciones (Misión, Visión, Equipo, Características)
 ================================= */
 .seccion {
-  padding: 5rem 2rem;
-  background-color: var(--gris-claro);
+  padding: var(--about-section-padding);
 }
+
+/* Alternancia de fondos para modo claro, el modo oscuro lo maneja dark-mode.css */
+.seccion.mision, .seccion.caracteristicas { /* Mision y Caracteristicas con fondo más claro */
+  background-color: var(--card-background-color); /* o un gris muy claro */
+}
+.seccion.vision, .seccion.equipo { /* Vision y Equipo con el fondo principal */
+  background-color: var(--background-color);
+}
+html.dark-mode-active .seccion.mision,
+html.dark-mode-active .seccion.caracteristicas {
+  background-color: var(--primary-color); /* Un poco más oscuro que el fondo principal oscuro */
+}
+html.dark-mode-active .seccion.vision,
+html.dark-mode-active .seccion.equipo {
+  background-color: var(--background-color);
+}
+
 
 .contenido {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem; /* Espacio entre elementos */
+  text-align: center; /* Centrado para móvil primero */
 }
 
 .contenido.reverse {
   flex-direction: column-reverse;
-  gap: 1.5rem;
 }
 
 .texto {
-  max-width: 600px;
-  text-align: center;
+  max-width: 650px; /* Ancho máximo para legibilidad */
 }
 
 .texto h2 {
-  font-size: 2.7rem;
-  color: var(--azul-noche);
-  margin-bottom: 1.5rem;
+  font-size: var(--about-title-size);
+  color: var(--text-color); /* Usar variable global */
+  font-family: var(--font-titles, 'Kalam', cursive);
+  margin-bottom: 1.2rem; /* Espacio ajustado */
 }
 
 .texto p {
-  color: var(--gris);
-  font-size: 1.1rem;
-  line-height: 1.8;
+  color: var(--text-color); /* Usar variable global */
+  font-size: var(--about-text-size);
+  line-height: 1.75; /* Mejorado */
 }
 
 .imagen {
-  max-width: 500px;
-  transition: transform 0.4s ease;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 480px; /* Ajustado */
+  width: 100%;
+  transition: transform 0.3s ease-out;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07); /* Sombra más sutil */
 }
 
 .imagen:hover {
-  transform: scale(1.04);
+  transform: scale(1.03); /* Efecto hover más sutil */
 }
 
-/* ===============================
-   Características
-================================= */
+/* Título de Sección General (para "Características Clave", "Nuestro Equipo") */
 .titulo-seccion {
   text-align: center;
-  font-size: 2.5rem;
-  color: var(--azul-noche);
-  margin: 5rem 0 2.5rem;
+  font-size: 2.2rem; /* Ajustado */
+  color: var(--text-color);
+  font-family: var(--font-titles, 'Kalam', cursive);
+  margin: 0 auto 3rem auto; /* Centrado y con margen inferior */
   position: relative;
+  padding-bottom: 0.8rem; /* Espacio para la línea */
+  max-width: fit-content; /* Ajustar al contenido */
 }
 
 .titulo-seccion::after {
   content: '';
   display: block;
-  width: 60px;
-  height: 4px;
-  background-color: #FFD700; /* dorado */
-  margin: 1rem auto 0;
+  width: 70px; /* Más larga */
+  height: 3px; /* Más delgada */
+  background-color: var(--accent-color); /* Usar variable de acento global */
+  position: absolute; /* Posicionamiento debajo del texto */
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 2px;
 }
 
-.grid-caracteristicas {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2.5rem;
-  padding: 0 2rem 4rem;
+/* Grid para Características y Equipo */
+.grid-caracteristicas, .grid-equipo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Grid responsive */
+  gap: 2rem; /* Espacio entre tarjetas */
+  padding: 0; /* Padding ya está en .container o .seccion */
 }
 
-.card {
-  background-color: #ffffff;
-  padding: 2.5rem 1.8rem;
-  border-radius: 16px;
+.card, .miembro-equipo {
+  background-color: var(--card-background-color); /* Variable global */
+  padding: 2rem 1.5rem; /* Padding ajustado */
+  border-radius: 10px;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  flex: 1 1 300px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06); /* Sombra sutil */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--secondary-color); /* Borde sutil */
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+.card:hover, .miembro-equipo:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
-.card h3 {
-  margin-top: 1rem;
-  margin-bottom: 0.7rem;
-  color: #1a1a1a;
-  font-size: 1.4rem;
+.card img { /* Para iconos de características */
+  width: 60px; /* Tamaño para iconos */
+  height: 60px;
+  margin: 0 auto 1rem auto; /* Centrar y espaciar */
+  object-fit: contain;
+  border-radius: 0; /* Sin redondeo para iconos usualmente */
+  box-shadow: none; /* Sin sombra para iconos */
 }
 
-.card p {
-  color: var(--gris);
-  font-size: 1.05rem;
-  line-height: 1.6;
+.miembro-equipo img { /* Para fotos del equipo */
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  margin: 0 auto 1rem auto; /* Centrar */
+  border: 3px solid var(--accent-color); /* Borde de acento */
+}
+
+.card h3, .miembro-equipo h3 {
+  font-family: var(--font-ui, 'Roboto', sans-serif); /* Fuente UI para subtítulos de tarjeta */
+  font-weight: 600; /* Más peso */
+  margin-bottom: 0.6rem;
+  color: var(--text-color);
+  font-size: var(--about-card-h3-size);
+}
+
+.card p, .miembro-equipo p {
+  color: var(--text-color); /* Usar --text-color y ajustar opacidad si es necesario */
+  opacity: 0.85; /* Hacer el texto descriptivo un poco más suave */
+  font-size: 0.95rem; /* Ajustado */
+  line-height: 1.65;
 }
 
 /* ===============================
-   Footer
+   Footer (estilos ahora globales en styles-index.css o footer.css)
+   Si este footer es muy diferente al global, se pueden mantener estilos específicos aquí.
+   Por ahora, se asume que el footer global de index.html será replicado.
 ================================= */
-footer {
-  background-color: #f9f9f9;
-  color: var(--azul-noche);
-  padding: 4rem 2rem 2rem;
-  font-size: 0.95rem;
-  border-top: 1px solid var(--gris-claro);
+/* Si About.html tiene un footer con id="contacto" y estructura diferente: */
+footer#contacto {
+  background-color: var(--footer-background-color);
+  color: var(--footer-text-color);
+  padding: 3rem 2rem 1.5rem; /* Padding ajustado */
+  font-size: 0.9rem; /* Ajustado */
+  border-top: 1px solid var(--secondary-color); /* Usar var global */
 }
 
-.footer-top {
+footer#contacto .footer-top {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1rem;
+  gap: 1.5rem; /* Espaciado */
+  margin-bottom: 2rem; /* Espacio antes de .footer-bottom */
 }
 
-.footer-top h3 {
-  color: var(--azul-noche);
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+footer#contacto h3 {
+  color: var(--accent-color); /* Usar var global */
+  font-family: var(--font-titles, 'Kalam', cursive);
+  font-size: 1.2rem; /* Ajustado */
+  margin-bottom: 0.8rem;
+}
+footer#contacto p {
+    color: var(--footer-text-color);
+    opacity: 0.9;
 }
 
-.iconos-redes {
+footer#contacto .iconos-redes {
   display: flex;
-  gap: 1.2rem;
+  gap: 1rem;
   justify-content: center;
   margin-top: 0.5rem;
 }
 
-.iconos-redes img {
-  height: 30px;
-  filter: brightness(1.1);
+footer#contacto .iconos-redes img {
+  height: 28px; /* Ajustado */
   transition: transform 0.2s ease;
+  /* El filtro para modo oscuro se manejará en dark-mode.css */
 }
 
-.iconos-redes img:hover {
-  transform: scale(1.1);
+footer#contacto .iconos-redes img:hover {
+  transform: scale(1.15);
 }
 
-.footer-bottom {
+footer#contacto .footer-bottom {
   margin-top: 2rem;
   text-align: center;
-  color: var(--azul-noche);
-  font-size: 0.85rem;
+  color: var(--footer-text-color);
+  opacity: 0.8;
+  font-size: 0.8rem; /* Ajustado */
 }
 
 /* ===============================
    Responsive
 ================================= */
-@media (min-width: 768px) {
-  .header-container {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
+@media (min-width: 768px) { /* Tablet y superior */
   .contenido,
   .contenido.reverse {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    gap: 2rem;
+    gap: 3rem; /* Mayor separación */
   }
 
   .texto, .imagen {
     flex: 1;
+    text-align: left; /* Alinear texto a la izquierda en desktop */
   }
-
-  .footer-top {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+  .contenido.reverse .texto {
+      text-align: left; /* Asegurar alineación izquierda incluso en reverse */
   }
-
-  .footer-top > div {
-    flex: 1;
-  }
-
-  .iconos-redes {
+   .contenido .imagen { /* Centrar imagen en su columna */
+    display: flex;
     justify-content: center;
+  }
+   .contenido.reverse .imagen {
+       justify-content: center; /* O flex-end si se prefiere a la derecha */
+   }
+
+
+  footer#contacto .footer-top {
+    flex-direction: row;
+    justify-content: space-around; /* Distribuir mejor */
+    align-items: flex-start; /* Alinear al inicio */
+    text-align: left; /* Alinear texto a la izquierda */
+  }
+
+  footer#contacto .footer-top > div { /* Cada columna del footer */
+    flex: 1;
+    max-width: 300px; /* Evitar que se extiendan demasiado */
+  }
+
+  footer#contacto .iconos-redes {
+    justify-content: flex-start; /* Alinear iconos a la izquierda */
   }
 }
 
-@media (max-width: 767px) {
-  .header-container {
-    flex-direction: column;
+@media (max-width: 767px) { /* Móvil */
+  .seccion { padding: 3rem 1rem; } /* Menos padding en móvil */
+  .texto h2 { font-size: 2rem; } /* Títulos más pequeños */
+  .titulo-seccion { font-size: 1.8rem; margin-bottom: 2rem;}
+  .card, .miembro-equipo { padding: 1.5rem 1rem; }
+  .card h3, .miembro-equipo h3 { font-size: 1.15rem; }
+  .card p, .miembro-equipo p { font-size: 0.9rem; }
+  .miembro-equipo img { width: 100px; height: 100px; }
+
+  footer#contacto .iconos-redes {
+    justify-content: center; /* Centrar iconos en móvil */
+  }
+  footer#contacto .footer-top > div {
+      text-align: center; /* Centrar texto de columnas de footer en móvil */
+  }
+}
+
+[end of docs/css/styles-about.css]
+
+[start of docs/css/styles-caracteristicas.css]
+/* styles-caracteristicas.css */
+/* Using global CSS variables now, specific file variables can be removed or aliased if needed */
+/* For instance, if --caracteristicas-xyz variables were identical to global ones, they are redundant. */
+/* If they were different, they should be kept or merged thoughtfully. */
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color); /* Global variable */
+    color: var(--text-color); /* Global variable */
+    line-height: 1.6;
+}
+
+.Banner {
+    background-color: var(--nav-background-color); /* Corrected to global nav variable */
+    color: var(--nav-text-color); /* Corrected to global nav text variable */
+    padding: 1em 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.Banner .languageSwitcher {
+    background-color: var(--accent-color) !important; /* Global accent */
+    color: var(--button-text-color) !important; /* Text color for button on accent */
+    font-family: 'Kalam', Serif;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-  }
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-  .nav {
-    position: static;
-    transform: none;
-    justify-content: center;
+.ParkingNow_Logo {
+    height: 50px;
+    vertical-align: middle;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu a, .dropdown-toggle {
+    color: var(--nav-text-color);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    margin: 0 0.5em;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 600;
+}
+
+.menu a:hover, .dropdown-toggle:hover {
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: var(--primary-color); /* Use a general primary color */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    border: 1px solid var(--secondary-color);
+}
+
+.dropdown-menu a {
+    color: var(--text-color); /* General text color for dropdown items */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    margin: 0;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.auth-buttons .btn {
+    margin-left: 1em;
+    padding: 0.5em 1.5em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.auth-buttons .btn-login {
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+}
+
+.auth-buttons .btn-register {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--accent-color);
+}
+
+.auth-buttons .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Estilos para las secciones de contenido */
+.Introduction, .Mision, .Vision {
+    padding: 3em 0;
+    text-align: center;
+    background-color: var(--background-color);
+}
+
+.container1, .container2 {
+    width: 85%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+
+.Mision .container2, .Vision .container2 {
+    flex-direction: row;
+}
+
+.content, .content2 {
+    flex: 1;
+    text-align: left;
+}
+
+.content h1, .content2 h1 {
+    font-size: 2.8rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5em;
+    font-family: 'Kalam', cursive;
+}
+
+.content p, .content2 p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+.image-container, .image-container2 {
+    flex: 1;
+    text-align: center;
+}
+
+.image-container img, .image-container2 img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.success {
+    color: var(--accent-color);
+}
+
+.bannerInfo {
+    padding: 2em 0;
+    text-align: center;
+}
+
+.bannerInfo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Footer */
+.footer-section {
+    background-color: var(--footer-background-color);
+    color: var(--footer-text-color);
+    padding: 2em 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 1.5em auto;
     flex-wrap: wrap;
-    padding-top: 0.5rem;
-  }
+}
 
-  .logo {
-    max-height: 48px;
-  }
+.footer-logo img {
+    height: 40px;
+}
+
+.footer-menu a {
+    color: var(--footer-text-color);
+    text-decoration: none;
+    margin: 0 1em;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.footer-menu a:hover {
+    color: var(--accent-color);
+}
+
+.footer-bottom {
+    font-size: 0.9em;
+    border-top: 1px solid var(--secondary-color);
+    padding-top: 1em;
+    margin-top: 1em;
+    color: var(--footer-text-color);
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .navbar, .container1, .container2, .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+     .Banner .languageSwitcher {
+        margin-top: 10px;
+    }
+
+    .menu {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1em;
+    }
+
+    .menu a, .dropdown {
+        margin: 0.5em 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: 1px solid var(--secondary-color);
+    }
+
+    .content, .content2, .image-container, .image-container2 {
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .footer-menu {
+        margin-top: 1em;
+    }
+}
+
+[end of docs/css/styles-caracteristicas.css]
+
+[start of docs/css/Conditions.css]
+
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #1d3557;
+  border-bottom: 2px solid #1d3557;
+  padding-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1d3557;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+footer {
+  margin-top: 3rem;
+}
+
+.terms-section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f1f3f5;
+  border-left: 4px solid #1d3557;
+  border-radius: 6px;
+}
+[end of docs/css/Conditions.css]
+
+[start of docs/css/dark-mode.css]
+/* Dark Mode Styles */
+
+/* Define dark theme variables when .dark-mode-active is on <html> */
+html.dark-mode-active {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --primary-color: #1e1e1e; /* For cards, darker sections */
+    --secondary-color: #333333; /* For accents, borders, secondary backgrounds */
+    --accent-color: #ffeb3b; /* Yellow accent */
+    --link-color: #bb86fc;
+    --nav-background-color: #1f2937; /* Specific for nav/header */
+    --nav-text-color: #e0e0e0;
+    --footer-background-color: #1f2937; /* Specific for footer */
+    --footer-text-color: #e0e0e0;
+    --card-background-color: #1e1e1e;
+    --card-text-color: #e0e0e0;
+    --button-background-color: var(--accent-color); /* Yellow */
+    --button-text-color: #121212; /* Dark text for yellow buttons */
+    --input-background-color: #2c2c2c;
+    --input-text-color: #e0e0e0;
+    --placeholder-color: #757575;
+
+    /* Specific variables for About page, if they need to differ from global dark */
+    --about-background-color: #121212;
+    --about-text-color: #e0e0e0;
+    --about-header-bg: var(--nav-background-color);
+    --about-header-text: var(--nav-text-color);
+    --about-accent-color: var(--accent-color);
+    --about-section-odd-bg: #1e1e1e;
+    --about-section-even-bg: #151515; /* Slightly different dark for variation */
+    --about-title-color: var(--accent-color);
+    --about-paragraph-color: #c0c0c0; /* Lighter grey for paragraphs */
+    --about-card-bg: #1e1e1e;
+    --about-card-shadow: rgba(255,255,255,0.05);
+    --about-subtitle-color: var(--accent-color);
+    --about-card-text-color: #c0c0c0;
+    --about-footer-bg: var(--footer-background-color);
+    --about-footer-text: var(--footer-text-color);
+    --about-footer-title-color: var(--accent-color);
+    --about-footer-divider: var(--secondary-color);
+
+    /* Specific variables for Caracteristicas page */
+    --caracteristicas-background-color: #121212;
+    --caracteristicas-text-color: #e0e0e0;
+    --caracteristicas-banner-bg: var(--nav-background-color);
+    --caracteristicas-banner-text: var(--nav-text-color);
+    --caracteristicas-accent-color: var(--accent-color);
+    --caracteristicas-dropdown-bg: #2a2a2a; /* Darker dropdown */
+    --caracteristicas-title-color: var(--accent-color);
+    --caracteristicas-paragraph-color: #c0c0c0;
+    --caracteristicas-footer-bg: var(--footer-background-color);
+    --caracteristicas-footer-text: var(--footer-text-color);
+    --caracteristicas-footer-divider: var(--secondary-color);
+}
+
+/* General body styles for dark mode - these will use the re-defined global vars */
+html.dark-mode-active body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Header & Nav specific dark styles (if not already covered by var changes) */
+html.dark-mode-active .site-header {
+    background-color: var(--nav-background-color);
+    box-shadow: 0 2px 8px rgba(255,255,255,0.05); /* Lighter shadow */
+}
+html.dark-mode-active .brand-logo,
+html.dark-mode-active .site-nav .nav-link,
+html.dark-mode-active .btn-icon,
+html.dark-mode-active .sidenav li > a.nav-link {
+    color: var(--nav-text-color) !important;
+}
+html.dark-mode-active .site-nav .nav-link:hover,
+html.dark-mode-active .site-nav .nav-link.active {
+    color: var(--accent-color) !important;
+    background-color: rgba(255,255,255,0.08);
+}
+html.dark-mode-active .btn-icon:hover {
+    background-color: rgba(255,255,255,0.12);
+}
+html.dark-mode-active .btn-register {
+    color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+}
+html.dark-mode-active .sidenav {
+    background-color: var(--nav-background-color);
+}
+
+
+/* Index Page Specific Dark Mode Styles */
+html.dark-mode-active #index-banner {
+    background-color: var(--primary-color); /* Uses the dark primary color */
+}
+html.dark-mode-active #index-banner h1 {
+    color: var(--accent-color);
+}
+html.dark-mode-active #index-banner p {
+    color: var(--text-color); /* General dark mode text */
+}
+
+html.dark-mode-active .card { /* General card style */
+    background-color: var(--card-background-color);
+}
+html.dark-mode-active .card .card-title,
+html.dark-mode-active .card p {
+    color: var(--card-text-color);
+}
+html.dark-mode-active .card .card-action a {
+    color: var(--link-color); /* Dark mode link color */
+}
+
+html.dark-mode-active .benefits-section {
+    background-color: var(--secondary-color);
+}
+html.dark-mode-active .benefits-section h2,
+html.dark-mode-active .benefit h5 { /* Titles within benefit cards */
+    color: var(--accent-color);
+}
+html.dark-mode-active .benefit {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+html.dark-mode-active .promotions-section h2,
+html.dark-mode-active .videos-section h2,
+html.dark-mode-active h2[data-i18n="safetyTitle"] { /* Target by data-i18n */
+    color: var(--accent-color);
+}
+html.dark-mode-active .promotions-section .promotion,
+html.dark-mode-active .promotions-section .promotion2 {
+    background-color: var(--card-background-color);
+}
+html.dark-mode-active .promotions-section .promotion h3,
+html.dark-mode-active .promotions-section .promotion2 h3 {
+    color: var(--accent-color);
+}
+html.dark-mode-active .promotions-section .promotion p,
+html.dark-mode-active .promotions-section .promotion2 p {
+    color: var(--text-color);
+}
+
+html.dark-mode-active .cta-section {
+    background-color: #000000; /* Keep very dark */
+    color: var(--text-color);
+}
+html.dark-mode-active .cta-title,
+html.dark-mode-active .cta-subtitle {
+    color: var(--text-color);
+}
+
+html.dark-mode-active .register_p {
+    background: linear-gradient(to right, #1e2732, #151b23); /* Darker gradient */
+}
+html.dark-mode-active .register_p .container_r {
+    background-color: var(--primary-color);
+    box-shadow: 12px 12px 2px 1px rgba(255,255,255,0.03);
+}
+html.dark-mode-active .register-form { /* Inside register_p */
+    background-color: var(--card-background-color);
+    box-shadow: 10px 4px 8px rgba(255,255,255,0.08);
+}
+html.dark-mode-active .Choose1, html.dark-mode-active .Choose2 {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+html.dark-mode-active .Choose1:hover, html.dark-mode-active .Choose2:hover {
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+}
+html.dark-mode-active .option h2 {
+    color: var(--accent-color);
+}
+html.dark-mode-active .option .ptex {
+    color: var(--text-color);
+}
+
+html.dark-mode-active footer.page-footer {
+    background-color: var(--footer-background-color) !important;
+    color: var(--footer-text-color);
+}
+html.dark-mode-active footer.page-footer .white-text,
+html.dark-mode-active footer.page-footer a.grey-text.text-lighten-3 {
+    color: var(--footer-text-color) !important;
+}
+html.dark-mode-active footer.page-footer a.grey-text.text-lighten-3:hover {
+    color: var(--accent-color) !important;
+}
+html.dark-mode-active .footer-social .Btn .svgContainer svg path {
+    fill: var(--footer-text-color);
+}
+html.dark-mode-active .footer-social .Btn:hover .BG {
+    background: var(--accent-color);
+}
+
+html.dark-mode-active #chatBox.card-panel {
+    background-color: var(--card-background-color);
+    border: 1px solid var(--secondary-color);
+}
+html.dark-mode-active #chatBox .chat-header span {
+    color: var(--accent-color);
+}
+html.dark-mode-active #chatBox #messages,
+html.dark-mode-active #chatBox .close-button {
+    color: var(--text-color);
+}
+
+/* About.html specific dark theme (using its own vars now overridden by html.dark-mode-active) */
+html.dark-mode-active .header { /* About page header if it has this class and not site-header */
+    background-color: var(--about-header-bg);
+}
+html.dark-mode-active .header .nav a {
+    color: var(--about-header-text);
+}
+html.dark-mode-active .header .nav a:hover {
+    color: var(--about-accent-color);
+}
+html.dark-mode-active .seccion {
+    background-color: var(--about-background-color); /* Uses the overridden --about-background-color */
+}
+html.dark-mode-active .seccion:nth-child(odd) {
+    background-color: var(--about-section-odd-bg);
+}
+html.dark-mode-active .seccion:nth-child(even) {
+    background-color: var(--about-section-even-bg);
+}
+html.dark-mode-active .seccion .contenido .texto h2,
+html.dark-mode-active .seccion .titulo-seccion {
+    color: var(--about-title-color);
+}
+html.dark-mode-active .seccion .contenido .texto p,
+html.dark-mode-active .seccion .card p,
+html.dark-mode-active .seccion .miembro-equipo p {
+    color: var(--about-paragraph-color);
+}
+html.dark-mode-active .seccion .card,
+html.dark-mode-active .seccion .miembro-equipo {
+    background-color: var(--about-card-bg);
+    border: 1px solid var(--secondary-color); /* Use global secondary */
+    box-shadow: var(--about-card-shadow);
+}
+html.dark-mode-active .seccion .card h3,
+html.dark-mode-active .seccion .miembro-equipo h3 {
+    color: var(--about-subtitle-color);
+}
+html.dark-mode-active footer#contacto {
+    background-color: var(--about-footer-bg);
+}
+html.dark-mode-active footer#contacto h3,
+html.dark-mode-active footer#contacto p {
+    color: var(--about-footer-text);
+}
+html.dark-mode-active footer#contacto .iconos-redes a img {
+    filter: invert(80%) sepia(10%) saturate(100%) hue-rotate(180deg) brightness(1.5) contrast(0.8); /* Adjusted filter for better visibility */
+}
+
+
+/* Caracteristicas.html specific dark theme */
+html.dark-mode-active .Banner { /* .Banner is the header in Caracteristicas.html */
+    background-color: var(--caracteristicas-banner-bg) !important;
+}
+html.dark-mode-active .Banner .navbar .menu a,
+html.dark-mode-active .Banner .navbar .dropdown-toggle {
+    color: var(--caracteristicas-banner-text);
+}
+html.dark-mode-active .Banner .navbar .menu a:hover,
+html.dark-mode-active .Banner .navbar .dropdown-toggle:hover {
+    color: var(--caracteristicas-accent-color); /* Text color change on hover */
+    background-color: rgba(255,255,255,0.1); /* Subtle background */
+}
+html.dark-mode-active .dropdown-menu { /* Dropdown in Caracteristicas nav */
+    background-color: var(--caracteristicas-dropdown-bg);
+    border: 1px solid var(--secondary-color);
+}
+html.dark-mode-active .dropdown-menu a {
+    color: var(--caracteristicas-banner-text);
+}
+html.dark-mode-active .dropdown-menu a:hover {
+    background-color: var(--secondary-color);
+    color: var(--caracteristicas-accent-color);
+}
+html.dark-mode-active .Introduction,
+html.dark-mode-active .Mision,
+html.dark-mode-active .Vision {
+    background-color: var(--caracteristicas-background-color);
+}
+html.dark-mode-active .Introduction h1,
+html.dark-mode-active .Mision h1,
+html.dark-mode-active .Vision h1 {
+    color: var(--caracteristicas-title-color);
+}
+html.dark-mode-active .Introduction p,
+html.dark-mode-active .Mision p,
+html.dark-mode-active .Vision p {
+    color: var(--caracteristicas-paragraph-color);
+}
+html.dark-mode-active .footer-section { /* Footer on Caracteristicas page */
+    background-color: var(--caracteristicas-footer-bg);
+}
+html.dark-mode-active .footer-section .footer-menu a {
+    color: var(--caracteristicas-footer-text);
+}
+html.dark-mode-active .footer-section .footer-menu a:hover {
+    color: var(--caracteristicas-accent-color);
+}
+html.dark-mode-active .footer-section .footer-bottom {
+    color: var(--caracteristicas-footer-text);
+    border-top-color: var(--caracteristicas-footer-divider);
+}
+
+/* Conditions.html specific dark theme */
+html.dark-mode-active .bg-\[\#101a23\] { /* Tailwind class from original Conditions */
+    background-color: var(--background-color) !important; /* Global dark bg */
+}
+html.dark-mode-active .text-white { /* Tailwind class */
+    color: var(--text-color) !important; /* Global dark text */
+}
+
+
+/* General Materialize components adjustments for dark mode (if not covered by variable overrides) */
+html.dark-mode-active .input-field input[type=text]:focus + label,
+html.dark-mode-active .input-field textarea:focus + label {
+    color: var(--accent-color) !important;
+}
+html.dark-mode-active .input-field input[type=text]:focus,
+html.dark-mode-active .input-field textarea:focus {
+    border-bottom: 1px solid var(--accent-color) !important;
+    box-shadow: 0 1px 0 0 var(--accent-color) !important;
+}
+html.dark-mode-active input,
+html.dark-mode-active select,
+html.dark-mode-active textarea {
+    background-color: var(--input-background-color) !important;
+    color: var(--input-text-color) !important;
+    border-bottom-color: var(--secondary-color) !important;
+}
+html.dark-mode-active ::placeholder {
+  color: var(--placeholder-color) !important;
+  opacity: 1;
+}
+html.dark-mode-active :-ms-input-placeholder {
+  color: var(--placeholder-color) !important;
+}
+html.dark-mode-active ::-ms-input-placeholder {
+  color: var(--placeholder-color) !important;
+}
+
+html.dark-mode-active .sub-text {
+    color: #b0b0b0;
+}
+html.dark-mode-active .video-container h5 {
+    color: var(--accent-color) !important;
+}
+
+/* Carousel Dark Mode Styles (ensure these use global dark vars) */
+html.dark-mode-active .app-mockups-carousel-section {
+    background-color: var(--background-color);
+}
+html.dark-mode-active .carousel-block {
+    background-color: var(--card-background-color);
+    box-shadow: 0 6px 20px rgba(255,255,255,0.05);
+}
+html.dark-mode-active .carousel-title {
+    color: var(--accent-color);
+}
+html.dark-mode-active .carousel-description {
+    color: var(--text-color);
+}
+html.dark-mode-active .carousel-container {
+    background-color: var(--background-color);
+}
+html.dark-mode-active .carousel-slide img {
+    box-shadow: 0 4px 12px rgba(255,255,255,0.08);
+}
+html.dark-mode-active .carousel-button {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+html.dark-mode-active .carousel-button:hover {
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+}
+html.dark-mode-active .carousel-button:focus {
+    outline: 2px solid var(--accent-color);
+}
+html.dark-mode-active .app-availability-info {
+    background-color: var(--primary-color);
+}
+html.dark-mode-active .app-availability-info p {
+    color: var(--text-color);
+}
+
+/* Fallback for systems that prefer dark mode but JS hasn't run or there's no manual override */
+@media (prefers-color-scheme: dark) {
+    html:not(.dark-mode-active) { /* Apply only if JS hasn't set a specific theme */
+        --background-color: #121212;
+        --text-color: #e0e0e0;
+        --primary-color: #1e1e1e;
+        --secondary-color: #333333;
+        --accent-color: #ffeb3b;
+        --link-color: #bb86fc;
+        --nav-background-color: #1f2937;
+        --nav-text-color: #e0e0e0;
+        --footer-background-color: #1f2937;
+        --footer-text-color: #e0e0e0;
+        --card-background-color: #1e1e1e;
+        --card-text-color: #e0e0e0;
+        --button-background-color: var(--accent-color);
+        --button-text-color: #121212;
+        --input-background-color: #2c2c2c;
+        --input-text-color: #e0e0e0;
+        --placeholder-color: #757575;
+    }
+
+    html:not(.dark-mode-active) body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+    /* Add other essential global dark mode styles here if needed for the prefers-color-scheme only case */
 }
