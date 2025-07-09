@@ -9,9 +9,9 @@
     <!-- Favicon -->
     <link rel="icon" href="images/parkingnow.ico" type="image/x-icon">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tinos:wght@400;700&family=Kalam:wght@300;400;700&family=Inter:wght@100..900&family=Nunito:wght@200..1000&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Kalam for titles, Roboto for body text and UI elements -->
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- For Material Icons -->
 
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="css/styles-caracteristicas.css">
@@ -20,34 +20,56 @@
 </head>
 
 <body>
-    <section class="Banner">
-        <nav class="navbar" aria-label="Main navigation bar">
-            <div class="logo">
-                <a href="index.html" aria-label="Homepage"><img src="images/parkingnow.png" alt="PARKINGNOW Logo" class="ParkingNow_Logo"></a>
+    <!-- Header Section -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="brand-logo" aria-label="ParkingNow Homepage">
+                <img src="images/parkingnow.png" alt="ParkingNow Logo" class="logo-img">
+                <span>ParkingNow</span>
+            </a>
+            <nav class="site-nav hide-on-med-and-down">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link" data-i18n="home">Home</a></li>
+                    <li><a href="Caracteristicas.html" class="nav-link active" data-i18n="features">Features</a></li>
+                    <li><a href="About.html" class="nav-link" data-i18n="aboutUs">About Us</a></li>
+                    <li><a href="Conditions.html" class="nav-link" data-i18n="termsConditions">Terms</a></li>
+                    <li><a href="index.html#footer" class="nav-link" data-i18n="contactUs">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions hide-on-med-and-down">
+                <button id="theme-toggle" class="btn-icon theme-toggle" aria-label="Toggle dark mode">
+                    <i class="material-icons theme-icon--light">brightness_7</i>
+                    <i class="material-icons theme-icon--dark">brightness_4</i>
+                </button>
+                <button class="languageSwitcher btn-icon language-toggle" aria-label="Switch language" data-i18n="languageSwitcherText">ES</button>
+                <a href="https://parkingnow-14273.web.app" class="btn waves-effect waves-light btn-login" data-i18n="login">Log in</a>
+                <a href="https://parkingnow-14273.web.app" class="btn waves-effect waves-light btn-register" data-i18n="registerAccount">Register</a>
             </div>
-            <div class="menu">
-                <a href="index.html" class="hover" aria-label="Go to homepage" data-i18n="home">Home</a>
-                <a href="Caracteristicas.html" class="hover" aria-label="View features" data-i18n="features">Features</a>
-                <a href="#Mision" class="hover" data-i18n="mission" aria-label="View mission">Mission</a>
-                <a href="#Vision" class="hover" data-i18n="vision" aria-label="View vision">Vision</a>
-                <div class="dropdown" aria-label="Reserve space menu">
-                    <a href="javascript:void(0)" class="hover dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-i18n="reserveSpace" aria-label="Open menu to reserve space">Reserve Space</a>
-                    <div class="dropdown-menu" aria-label="Reserve space options">
-                        <a href="reserve-lima" class="hover" data-i18n="cityLimaTitle" aria-label="Reserve a space in Lima">Lima</a>
-                        <a href="reserve-arequipa" class="hover" data-i18n="cityArequipaTitle" aria-label="Reserve a space in Arequipa">Arequipa</a>
-                        <a href="reserve-cusco" class="hover" data-i18n="cityCuscoTitle" aria-label="Reserve a space in Cusco">Cusco</a>
-                    </div>
-                </div>
+            <a href="#" data-target="mobile-menu" class="sidenav-trigger hide-on-large-only"><i class="material-icons">menu</i></a>
+        </div>
+    </header>
+
+    <!-- Mobile Sidenav -->
+    <ul class="sidenav" id="mobile-menu">
+        <li><a href="index.html" class="nav-link" data-i18n="home">Home</a></li>
+        <li><a href="Caracteristicas.html" class="nav-link active" data-i18n="features">Features</a></li>
+        <li><a href="About.html" class="nav-link" data-i18n="aboutUs">About Us</a></li>
+        <li><a href="Conditions.html" class="nav-link" data-i18n="termsConditions">Terms</a></li>
+        <li><a href="index.html#footer" class="nav-link" data-i18n="contactUs">Contact</a></li>
+        <li class="divider"></li>
+        <li><a href="https://parkingnow-14273.web.app" class="btn waves-effect waves-light btn-login full-width-mobile" data-i18n="login">Log in</a></li>
+        <li><a href="https://parkingnow-14273.web.app" class="btn waves-effect waves-light btn-register full-width-mobile" data-i18n="registerAccount">Register</a></li>
+        <li class="divider"></li>
+        <li>
+            <div class="mobile-actions">
+                <button id="theme-toggle-mobile" class="btn-icon theme-toggle" aria-label="Toggle dark mode">
+                    <i class="material-icons theme-icon--light">brightness_7</i>
+                    <i class="material-icons theme-icon--dark">brightness_4</i>
+                </button>
+                <button class="languageSwitcher btn-icon language-toggle" aria-label="Switch language" data-i18n="languageSwitcherTextMobile">ES</button>
             </div>
-            <div class="auth-buttons">
-                <!-- Auth buttons can be added here if needed -->
-            </div>
-            <!-- Language Switcher Button -->
-            <div>
-                <button class="languageSwitcher btn grey darken-3 white-text" style="margin-left: 25px; padding: 13px; border: none; cursor: pointer; border-radius: 5px; background-color: #e8db6c; font-family: Kalam, Serif " aria-label="Switch language">Español</button>
-            </div>
-        </nav>
-    </section>
+        </li>
+    </ul>
 
     <section class="Introduction">
         <div class="container1">
@@ -113,20 +135,26 @@
 
     <!-- Custom JS for Language Switching -->
     <script src="js/i18n.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
         // Additional page-specific JS can go here if needed
-        // For example, event listeners for dropdowns or other interactive elements
         document.addEventListener('DOMContentLoaded', function () {
-            const dropdownToggle = document.querySelector('.dropdown-toggle');
-            const dropdownMenu = document.querySelector('.dropdown-menu');
+            // Sidenav initialization (if not handled globally)
+            // var elems = document.querySelectorAll('.sidenav');
+            // M.Sidenav.init(elems);
 
+            const dropdownToggle = document.querySelector('.dropdown-toggle'); // This might be part of the old nav
+            const dropdownMenu = document.querySelector('.dropdown-menu'); // This might be part of the old nav
+
+            // If the old dropdown structure is still used within this page's content (not header), keep this.
+            // Otherwise, if the header is standardized, this specific dropdown logic might be obsolete.
             if (dropdownToggle && dropdownMenu) {
                 dropdownToggle.addEventListener('click', function (event) {
                     event.preventDefault();
                     dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
                 });
 
-                // Optional: Close dropdown if clicked outside
                 document.addEventListener('click', function (event) {
                     if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
                         dropdownMenu.style.display = 'none';
