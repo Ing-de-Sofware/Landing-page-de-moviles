@@ -1,9 +1,23 @@
-
+:root {
+  --background-color: #ffffff;
+  --text-color: #1f2937;
+  --primary-color: #1e3a8a;
+  --accent-color: #fbbf24;
+  --secondary-color: #e0e7ff;
+  --card-background-color: #ffffff;
+  --nav-background-color: #1e293b;
+  --nav-text-color: #f1f5f9;
+  --footer-background-color: #1e293b;
+  --footer-text-color: #f1f5f9;
+  --button-background-color: #fbbf24;
+  --button-text-color: #1f2937;
+  --link-color: #0ea5e9;
+}
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f8f9fa;
-  color: #212529;
+  background-color: var(--background-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
 }
@@ -12,7 +26,7 @@ body {
   max-width: 900px;
   margin: 3rem auto;
   padding: 2rem;
-  background-color: #ffffff;
+  background-color: var(--card-background-color);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
 }
@@ -20,15 +34,15 @@ body {
 h1 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  color: #1d3557;
-  border-bottom: 2px solid #1d3557;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
   padding-bottom: 0.5rem;
 }
 
 h2 {
   font-size: 1.5rem;
   margin-top: 2rem;
-  color: #1d3557;
+  color: var(--primary-color);
 }
 
 p {
@@ -50,7 +64,7 @@ footer {
   margin-top: 2rem;
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background-color: #f1f3f5;
-  border-left: 4px solid #1d3557;
+  background-color: var(--secondary-color);
+  border-left: 4px solid var(--primary-color);
   border-radius: 6px;
 }

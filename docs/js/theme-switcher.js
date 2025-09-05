@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggleButtons = document.querySelectorAll('.theme-toggle'); // Selects both desktop and mobile buttons
-    const lightIconClass = 'theme-icon--light';
-    const darkIconClass = 'theme-icon--dark';
 
     function applyTheme(theme) {
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark-mode-active');
-        } else {
-            document.documentElement.classList.remove('dark-mode-active');
-        }
+        const enableDark = theme === 'dark';
+        document.documentElement.classList.toggle('dark-mode-active', enableDark);
+
+        // Update accessible labels for all toggle buttons
+        themeToggleButtons.forEach(btn => {
+            btn.setAttribute('aria-label', enableDark ? 'Switch to light mode' : 'Switch to dark mode');
+        });
         // Icon visibility is handled by CSS based on .dark-mode-active
     }
 
