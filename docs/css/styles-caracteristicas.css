@@ -1,9 +1,26 @@
 /* Styles for Navbar */
+
+:root {
+    --background-color: #ffffff;
+    --text-color: #1f2937;
+    --primary-color: #1e3a8a;
+    --accent-color: #fbbf24;
+    --secondary-color: #e0e7ff;
+    --card-background-color: #ffffff;
+    --card-text-color: #1f2937;
+    --nav-background-color: #1e293b;
+    --nav-text-color: #f1f5f9;
+    --footer-background-color: #1e293b;
+    --footer-text-color: #f1f5f9;
+    --button-background-color: #fbbf24;
+    --button-text-color: #1f2937;
+    --link-color: #0ea5e9;
+}
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2a2a2a;
+    background-color: var(--nav-background-color);
     padding: 10px 20px;
 }
 
@@ -17,7 +34,7 @@
 }
 
 .menu a {
-    color: white;
+    color: var(--nav-text-color);
     text-decoration: none;
     margin: 0 10px;
     font-family: 'Tinos', serif;
@@ -33,14 +50,14 @@
 }
 
 .login-button, .register-button {
-    background-color: #ffeb3b;
+    background-color: var(--button-background-color);
     border: none;
     padding: 8px 15px;
     border-radius: 4px;
 }
 
 .login-button a, .register-button a {
-    color: #2a2a2a;
+    color: var(--button-text-color);
     text-decoration: none;
 }
 
@@ -49,19 +66,19 @@ body {
     font-family: 'Tinos', serif;
     margin: 0;
     padding: 0;
-    background-color: #2a2a2a; /* Fondo oscuro */
-    color: #f4f4f9; /* Color claro para el texto */
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 h1, h2 {
     text-align: center;
     margin-bottom: 40px;
-    color: #ffeb3b; /* Color amarillo destacado para los títulos */
+    color: var(--accent-color);
 }
 
 p {
     line-height: 1.6;
-    color: #f4f4f9; /* Asegurarse de que el texto general siga siendo claro */
+    color: var(--text-color);
 }
 
 img {
@@ -76,7 +93,7 @@ img {
     align-items: center;
     padding: 50px 20px;
     flex-wrap: wrap; /* Permitir que los elementos se ajusten en pantallas más pequeñas */
-    background: linear-gradient(to right, #363c48, #5f687c);
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
 }
 
 /* Mejoras para las secciones de contenido */
@@ -86,7 +103,7 @@ img {
     align-items: center;
     padding: 50px 20px;
     flex-wrap: wrap; /* Permitir que los elementos se ajusten en pantallas más pequeñas */
-    background: #2f3640;
+    background: var(--primary-color);
 }
 
 .content, .content2 {
@@ -125,16 +142,16 @@ img {
 
 /* Banner Section */
 .Banner {
-    background-color: #2a2a2a;
+    background-color: var(--nav-background-color);
     padding: 20px 0;
-    color: white;
+    color: var(--nav-text-color);
 }
 
 /* Footer */
 .footer-section {
-    background-color: #2a2a2a;
+    background-color: var(--footer-background-color);
     padding: 20px;
-    color: white;
+    color: var(--footer-text-color);
     text-align: center;
 }
 
@@ -150,7 +167,7 @@ img {
 }
 
 .footer-menu a {
-    color: white;
+    color: var(--footer-text-color);
     text-decoration: none;
     margin: 0 10px;
 }
@@ -158,7 +175,7 @@ img {
 .footer-bottom {
     margin-top: 10px;
     font-size: 0.9rem;
-    color: #aaa;
+    color: var(--footer-text-color);
 }
 
 /* Dropdown */
@@ -169,7 +186,7 @@ img {
 .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: #2a2a2a;
+    background-color: var(--nav-background-color);
     padding: 10px;
     margin-top: 10px;
     z-index: 1;
@@ -178,7 +195,7 @@ img {
 .dropdown-menu a {
     display: block;
     padding: 5px;
-    color: white;
+    color: var(--nav-text-color);
 }
 
 .dropdown:hover .dropdown-menu {

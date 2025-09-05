@@ -2,52 +2,52 @@
 
 /* Define dark theme variables when .dark-mode-active is on <html> */
 html.dark-mode-active {
-    --background-color: #121212;
-    --text-color: #e0e0e0;
-    --primary-color: #1e1e1e; /* For cards, darker sections */
-    --secondary-color: #333333; /* For accents, borders, secondary backgrounds */
-    --accent-color: #ffeb3b; /* Yellow accent */
-    --link-color: #bb86fc;
-    --nav-background-color: #1f2937; /* Specific for nav/header */
-    --nav-text-color: #e0e0e0;
-    --footer-background-color: #1f2937; /* Specific for footer */
-    --footer-text-color: #e0e0e0;
-    --card-background-color: #1e1e1e;
-    --card-text-color: #e0e0e0;
-    --button-background-color: var(--accent-color); /* Yellow */
-    --button-text-color: #121212; /* Dark text for yellow buttons */
-    --input-background-color: #2c2c2c;
-    --input-text-color: #e0e0e0;
-    --placeholder-color: #757575;
+    --background-color: #0f172a;
+    --text-color: #e2e8f0;
+    --primary-color: #1e293b; /* For cards, darker sections */
+    --secondary-color: #334155; /* For accents, borders, secondary backgrounds */
+    --accent-color: #fbbf24; /* Amber accent */
+    --link-color: #38bdf8;
+    --nav-background-color: #0f172a; /* Specific for nav/header */
+    --nav-text-color: #e2e8f0;
+    --footer-background-color: #0f172a; /* Specific for footer */
+    --footer-text-color: #e2e8f0;
+    --card-background-color: #1e293b;
+    --card-text-color: #e2e8f0;
+    --button-background-color: var(--accent-color); /* Amber */
+    --button-text-color: #1f2937; /* Dark text for amber buttons */
+    --input-background-color: #334155;
+    --input-text-color: #e2e8f0;
+    --placeholder-color: #94a3b8;
 
     /* Specific variables for About page, if they need to differ from global dark */
-    --about-background-color: #121212;
-    --about-text-color: #e0e0e0;
+    --about-background-color: var(--background-color);
+    --about-text-color: var(--text-color);
     --about-header-bg: var(--nav-background-color);
     --about-header-text: var(--nav-text-color);
     --about-accent-color: var(--accent-color);
-    --about-section-odd-bg: #1e1e1e;
-    --about-section-even-bg: #151515; /* Slightly different dark for variation */
+    --about-section-odd-bg: var(--primary-color);
+    --about-section-even-bg: #111827; /* Slightly different dark for variation */
     --about-title-color: var(--accent-color);
-    --about-paragraph-color: #c0c0c0; /* Lighter grey for paragraphs */
-    --about-card-bg: #1e1e1e;
+    --about-paragraph-color: #cbd5e1; /* Lighter grey for paragraphs */
+    --about-card-bg: #1e293b;
     --about-card-shadow: rgba(255,255,255,0.05);
     --about-subtitle-color: var(--accent-color);
-    --about-card-text-color: #c0c0c0;
+    --about-card-text-color: #cbd5e1;
     --about-footer-bg: var(--footer-background-color);
     --about-footer-text: var(--footer-text-color);
     --about-footer-title-color: var(--accent-color);
     --about-footer-divider: var(--secondary-color);
 
     /* Specific variables for Caracteristicas page */
-    --caracteristicas-background-color: #121212;
-    --caracteristicas-text-color: #e0e0e0;
+    --caracteristicas-background-color: var(--background-color);
+    --caracteristicas-text-color: var(--text-color);
     --caracteristicas-banner-bg: var(--nav-background-color);
     --caracteristicas-banner-text: var(--nav-text-color);
     --caracteristicas-accent-color: var(--accent-color);
-    --caracteristicas-dropdown-bg: #2a2a2a; /* Darker dropdown */
+    --caracteristicas-dropdown-bg: #334155; /* Darker dropdown */
     --caracteristicas-title-color: var(--accent-color);
-    --caracteristicas-paragraph-color: #c0c0c0;
+    --caracteristicas-paragraph-color: #cbd5e1;
     --caracteristicas-footer-bg: var(--footer-background-color);
     --caracteristicas-footer-text: var(--footer-text-color);
     --caracteristicas-footer-divider: var(--secondary-color);
@@ -140,7 +140,7 @@ html.dark-mode-active .promotions-section .promotion2 p {
 }
 
 html.dark-mode-active .cta-section {
-    background-color: #000000; /* Keep very dark */
+    background-color: var(--primary-color);
     color: var(--text-color);
 }
 html.dark-mode-active .cta-title,
@@ -149,7 +149,7 @@ html.dark-mode-active .cta-subtitle {
 }
 
 html.dark-mode-active .register_p {
-    background: linear-gradient(to right, #1e2732, #151b23); /* Darker gradient */
+    background: linear-gradient(to right, var(--primary-color), #0f172a); /* Darker gradient */
 }
 html.dark-mode-active .register_p .container_r {
     background-color: var(--primary-color);
@@ -392,23 +392,23 @@ html.dark-mode-active .app-availability-info p {
 /* Fallback for systems that prefer dark mode but JS hasn't run or there's no manual override */
 @media (prefers-color-scheme: dark) {
     html:not(.dark-mode-active) { /* Apply only if JS hasn't set a specific theme */
-        --background-color: #121212;
-        --text-color: #e0e0e0;
-        --primary-color: #1e1e1e;
-        --secondary-color: #333333;
-        --accent-color: #ffeb3b;
-        --link-color: #bb86fc;
-        --nav-background-color: #1f2937;
-        --nav-text-color: #e0e0e0;
-        --footer-background-color: #1f2937;
-        --footer-text-color: #e0e0e0;
-        --card-background-color: #1e1e1e;
-        --card-text-color: #e0e0e0;
+        --background-color: #0f172a;
+        --text-color: #e2e8f0;
+        --primary-color: #1e293b;
+        --secondary-color: #334155;
+        --accent-color: #fbbf24;
+        --link-color: #38bdf8;
+        --nav-background-color: #0f172a;
+        --nav-text-color: #e2e8f0;
+        --footer-background-color: #0f172a;
+        --footer-text-color: #e2e8f0;
+        --card-background-color: #1e293b;
+        --card-text-color: #e2e8f0;
         --button-background-color: var(--accent-color);
-        --button-text-color: #121212;
-        --input-background-color: #2c2c2c;
-        --input-text-color: #e0e0e0;
-        --placeholder-color: #757575;
+        --button-text-color: #1f2937;
+        --input-background-color: #334155;
+        --input-text-color: #e2e8f0;
+        --placeholder-color: #94a3b8;
     }
 
     html:not(.dark-mode-active) body {
